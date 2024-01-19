@@ -2,16 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://gitee.com/xyiling/blogs/2023/12/12/python%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/</loc>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</loc>
     
-    <lastmod>2023-12-12</lastmod>
+    <lastmod>2024-01-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://gitee.com/xyiling/blogs/2023/12/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</loc>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/28/csapp/</loc>
+    
+    <lastmod>2023-12-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/27/intel%20x86%E6%B1%87%E7%BC%96%E8%AF%AD%E6%B3%95/</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/22/%E7%BD%91%E7%BB%9C%E5%B1%82ip%E5%8D%8F%E8%AE%AE/</loc>
+    
+    <lastmod>2023-12-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/21/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%9C%A8%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BC%A0%E8%BE%93%E7%BB%86%E8%8A%82/</loc>
+    
+    <lastmod>2023-12-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/19/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
+    
+    <lastmod>2023-12-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/22/http%E5%8D%8F%E8%AE%AE/</loc>
+    
+    <lastmod>2023-12-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/19/linux%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</loc>
+    
+    <lastmod>2023-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gitee.com/xyiling/blogs/2023/12/12/python%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/</loc>
     
     <lastmod>2023-12-12</lastmod>
     
@@ -22,7 +85,7 @@
 
   <url>
     <loc>http://gitee.com/xyiling/blogs</loc>
-    <lastmod>2023-12-12</lastmod>
+    <lastmod>2024-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

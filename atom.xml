@@ -6,7 +6,7 @@
   <link href="https://github.com/xyiling/xyiling.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/xyiling/xyiling.github.io/"/>
-  <updated>2024-07-11T09:15:12.134Z</updated>
+  <updated>2024-07-30T10:25:13.932Z</updated>
   <id>https://github.com/xyiling/xyiling.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/xyiling/xyiling.github.io/2024/07/30/custom/css/background/"/>
+    <id>https://github.com/xyiling/xyiling.github.io/2024/07/30/custom/css/background/</id>
+    <published>2024-07-30T10:25:11.749Z</published>
+    <updated>2024-07-30T10:25:13.932Z</updated>
+    
+    <content type="html"><![CDATA[#web_bg {    background: -webkit-linear-gradient(      0deg,      rgba(247, 149, 51, 0.1) 0,      rgba(243, 112, 85, 0.1) 15%,      rgba(239, 78, 123, 0.1) 30%,      rgba(161, 102, 171, 0.1) 44%,      rgba(80, 115, 184, 0.1) 58%,      rgba(16, 152, 173, 0.1) 72%,      rgba(7, 179, 155, 0.1) 86%,      rgba(109, 186, 130, 0.1) 100%    );    background: -moz-linear-gradient(      0deg,      rgba(247, 149, 51, 0.1) 0,      rgba(243, 112, 85, 0.1) 15%,      rgba(239, 78, 123, 0.1) 30%,      rgba(161, 102, 171, 0.1) 44%,      rgba(80, 115, 184, 0.1) 58%,      rgba(16, 152, 173, 0.1) 72%,      rgba(7, 179, 155, 0.1) 86%,      rgba(109, 186, 130, 0.1) 100%    );    background: -o-linear-gradient(      0deg,      rgba(247, 149, 51, 0.1) 0,      rgba(243, 112, 85, 0.1) 15%,      rgba(239, 78, 123, 0.1) 30%,      rgba(161, 102, 171, 0.1) 44%,      rgba(80, 115, 184, 0.1) 58%,      rgba(16, 152, 173, 0.1) 72%,      rgba(7, 179, 155, 0.1) 86%,      rgba(109, 186, 130, 0.1) 100%    );    background: -ms-linear-gradient(      0deg,      rgba(247, 149, 51, 0.1) 0,      rgba(243, 112, 85, 0.1) 15%,      rgba(239, 78, 123, 0.1) 30%,      rgba(161, 102, 171, 0.1) 44%,      rgba(80, 115, 184, 0.1) 58%,      rgba(16, 152, 173, 0.1) 72%,      rgba(7, 179, 155, 0.1) 86%,      rgba(109, 186, 130, 0.1) 100%    );    background: linear-gradient(      90deg,      rgba(247, 149, 51, 0.1) 0,      rgba(243, 112, 85, 0.1) 15%,      rgba(239, 78, 123, 0.1) 30%,      rgba(161, 102, 171, 0.1) 44%,      rgba(80, 115, 184, 0.1) 58%,      rgba(16, 152, 173, 0.1) 72%,      rgba(7, 179, 155, 0.1) 86%,      rgba(109, 186, 130, 0.1) 100%    );  }  ]]></content>
+    
+    
+      
+      
+    <summary type="html">#web_bg {
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(247, 149, 51, 0.1) 0,
+      rgba(243, 112, 85, 0.1) 15%,
+      rgb</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -395,26 +420,6 @@ img {
       
     <summary type="html">var mobile_sidebar_menus = document.getElementById(&quot;mobile-sidebar-menus&quot;);
 var menus_item_child = mobile_sidebar_menus.getElementsByClassNa</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>csapp阅读笔记</title>
-    <link href="https://github.com/xyiling/xyiling.github.io/2023/12/28/csapp/"/>
-    <id>https://github.com/xyiling/xyiling.github.io/2023/12/28/csapp/</id>
-    <published>2023-12-27T16:00:00.000Z</published>
-    <updated>2023-12-28T15:02:28.950Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="csapp阅读笔记"><a href="#csapp阅读笔记" class="headerlink" title="csapp阅读笔记"></a>csapp阅读笔记</h1><h2 id="ch1-计算机系统漫游"><a href="#ch1-计算机系统漫游" class="headerlink" title="ch1 计算机系统漫游"></a>ch1 计算机系统漫游</h2><ol><li>程序在计算机中以‘比特’的形式存储；</li><li>c程序到可执行程序：.c(源文件) –&gt; .i(预编译后得到的文件) –&gt; .s(编译后得到的文件) –&gt; .o(汇编后得到的文件) –&gt; .out(可执行文件)</li><li>了解编译系统如何工作有什么好处？</li></ol><ul><li>优化程序性能：switch和if-else如何取舍？while与for如何选择？指针与索引访问数组，哪一个效率更高？</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;csapp阅读笔记&quot;&gt;&lt;a href=&quot;#csapp阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;csapp阅读笔记&quot;&gt;&lt;/a&gt;csapp阅读笔记&lt;/h1&gt;&lt;h2 id=&quot;ch1-计算机系统漫游&quot;&gt;&lt;a href=&quot;#ch1-计算机系统漫游&quot; c</summary>
       
     
     

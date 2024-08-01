@@ -6,7 +6,7 @@
   <link href="https://github.com/xyiling/xyiling.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/xyiling/xyiling.github.io/"/>
-  <updated>2024-07-30T10:25:13.932Z</updated>
+  <updated>2024-08-01T07:17:12.655Z</updated>
   <id>https://github.com/xyiling/xyiling.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>B+树概念</title>
+    <link href="https://github.com/xyiling/xyiling.github.io/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/"/>
+    <id>https://github.com/xyiling/xyiling.github.io/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/</id>
+    <published>2024-07-31T16:00:00.000Z</published>
+    <updated>2024-08-01T07:17:12.655Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="B-树概念"><a href="#B-树概念" class="headerlink" title="B+树概念"></a>B+树概念</h2><p>阶数m：分支数量，根据节点类型不同，m的取值不同。<br>对于非叶子结点，m&gt;&#x3D;$\lceil m&#x2F;2 \rceil$,m&lt;&#x3D;m-1。解释：一棵m阶b+树，非叶子结点最多含有m个分支（子结点），且最少含有m&#x2F;2个分支（子结点）。<br>对于叶子节点，子结点数量最大可取m，最小还是$\lceil m&#x2F;2 \rceil$</p><p>m阶b+树，一个结点最多可以有m-1个关键字，最少$\lceil m&#x2F;2 \rceil$个关键字。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;B-树概念&quot;&gt;&lt;a href=&quot;#B-树概念&quot; class=&quot;headerlink&quot; title=&quot;B+树概念&quot;&gt;&lt;/a&gt;B+树概念&lt;/h2&gt;&lt;p&gt;阶数m：分支数量，根据节点类型不同，m的取值不同。&lt;br&gt;对于非叶子结点，m&amp;gt;&amp;#x3D;$&#92;lceil m&amp;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java传值方式</title>
+    <link href="https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/"/>
+    <id>https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/</id>
+    <published>2024-07-31T16:00:00.000Z</published>
+    <updated>2024-08-01T07:13:35.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>java 只支持值传递，没有引用传递方式，即使传入对象，那也是对象的地址，地址也是简单数据类型，也就是值传递，所以如果一个函数交换两个对象的地址，是不会成功的。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">xiaoZhang</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;小张&quot;</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">xiaoLi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;小李&quot;</span>);</span><br><span class="line">        swap(xiaoZhang, xiaoLi);</span><br><span class="line">        System.out.println(<span class="string">&quot;xiaoZhang:&quot;</span> + xiaoZhang.getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;xiaoLi:&quot;</span> + xiaoLi.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(Person person1, Person person2)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">temp</span> <span class="operator">=</span> person1;</span><br><span class="line">        person1 = person2;</span><br><span class="line">        person2 = temp;</span><br><span class="line">        System.out.println(<span class="string">&quot;person1:&quot;</span> + person1.getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;person2:&quot;</span> + person2.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>输出结果：</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">person1:小李</span><br><span class="line">person2:小张</span><br><span class="line">xiaoZhang:小张</span><br><span class="line">xiaoLi:小李</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;java 只支持值传递，没有引用传递方式，即使传入对象，那也是对象的地址，地址也是简单数据类型，也就是值传递，所以如果一个函数交换两个对象的地址，是不会成功的。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    <category term="java" scheme="https://github.com/xyiling/xyiling.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -379,47 +422,6 @@ img {
       
       
     <summary type="html">&lt;h1 id=&quot;数据结构与算法-考研难点总结&quot;&gt;&lt;a href=&quot;#数据结构与算法-考研难点总结&quot; class=&quot;headerlink&quot; title=&quot;数据结构与算法 考研难点总结&quot;&gt;&lt;/a&gt;数据结构与算法 考研难点总结&lt;/h1&gt;&lt;h2 id=&quot;算法的稳定性&quot;&gt;&lt;a href=&quot;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java开发笔记</title>
-    <link href="https://github.com/xyiling/xyiling.github.io/2024/01/25/java%E6%80%BB%E7%BB%93/"/>
-    <id>https://github.com/xyiling/xyiling.github.io/2024/01/25/java%E6%80%BB%E7%BB%93/</id>
-    <published>2024-01-24T16:00:00.000Z</published>
-    <updated>2024-01-25T06:58:36.457Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="java开发笔记"><a href="#java开发笔记" class="headerlink" title="java开发笔记"></a>java开发笔记</h1><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>list自带排序：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;MyObject&gt; list = ...;</span><br><span class="line">list.sort((o1, o2) -&gt; o2.getXXX().compareTo(o1.getXXX()));   <span class="comment">// 倒序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * x.compareTo(y):</span></span><br><span class="line"><span class="comment"> * 返回值：</span></span><br><span class="line"><span class="comment"> * 1. &gt; 0, x &gt; y; </span></span><br><span class="line"><span class="comment"> * 2. &lt; 0, x &lt; y;</span></span><br><span class="line"><span class="comment"> * 3. = 0, x = y</span></span><br><span class="line"><span class="comment"> * /</span></span><br></pre></td></tr></table></figure><p>特点：</p><ul><li>自排序，无返回值</li><li>如果是对象类型的元素，需要重写Comporator比较器</li></ul><h2 id="分割字符串，构造不大于指定大小的字串"><a href="#分割字符串，构造不大于指定大小的字串" class="headerlink" title="分割字符串，构造不大于指定大小的字串"></a>分割字符串，构造不大于指定大小的字串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title function_">splitStr</span><span class="params">(String input, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">    List&lt;String&gt; resultStrList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    String[] lines = input.split(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">for</span> (String line : lines) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sb.length() + line.length() + <span class="number">1</span> &gt; length) &#123; <span class="comment">// 超过目标长度</span></span><br><span class="line">            resultStrList.add(sb.toString()); <span class="comment">// 添加当前字串到结果列表</span></span><br><span class="line">            sb = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(); <span class="comment">// 重置 StringBuilder</span></span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(line).append(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加最后一个字串</span></span><br><span class="line">    <span class="keyword">if</span> (sb.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        resultStrList.add(sb.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultStrList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;java开发笔记&quot;&gt;&lt;a href=&quot;#java开发笔记&quot; class=&quot;headerlink&quot; title=&quot;java开发笔记&quot;&gt;&lt;/a&gt;java开发笔记&lt;/h1&gt;&lt;h2 id=&quot;排序&quot;&gt;&lt;a href=&quot;#排序&quot; class=&quot;headerlink&quot; titl</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://github.com/xyiling/xyiling.github.io/2024/01/22/custom/js/script/"/>
-    <id>https://github.com/xyiling/xyiling.github.io/2024/01/22/custom/js/script/</id>
-    <published>2024-01-22T06:13:39.847Z</published>
-    <updated>2024-03-03T10:46:06.444Z</updated>
-    
-    <content type="html"><![CDATA[var mobile_sidebar_menus = document.getElementById("mobile-sidebar-menus");var menus_item_child = mobile_sidebar_menus.getElementsByClassName(    "menus_item_child");var menus_expand = mobile_sidebar_menus.getElementsByClassName("menus-expand");for (var i = 0; i < menus_item_child.length; i++) {    menus_item_child[i].style.display = "none";    menus_expand[i].className += " menus-closed";}// 分类卡片var card_category_list = document.getElementsByClassName(    "card-category-list child");var item = document.getElementsByClassName("card-category-list-item");function toggle(t) {    var display = t.parentElement.nextSibling.style.display;    if (display == "none") {        t.parentElement.nextSibling.style.display = "block";        t.parentElement.nextSibling.style.height = "100%";        t.className = t.className.replace("fa-chevron-up", "fa-chevron-down");    } else {        t.parentElement.nextSibling.style.display = "none";        t.className = t.className.replace("fa-chevron-down", "fa-chevron-up");    }}for (var i = 0; i < card_category_list.length; i++) {    card_category_list[i].style.display = "none";    card_category_list[i].style.transition = "all 1s";    card_category_list[i].previousSibling.innerHTML +=        '<i class="fa fa-chevron-up menus-expand  menus-closed" aria-hidden="true" style="margin-left:20px;" onclick="toggle(this)"></i>';}// 获取标签// 全局背景divvar web_bg = document.getElementById("web_bg");// 公共父级var content_inner = document.getElementById("content-inner");// 获取Cookies// 透明度var opacity = Cookies.get("opacity");// 背景var bg = Cookies.get("bg");// 动画var animation = Cookies.get("animation");// 背景类型var type = Cookies.get("type");// 声明遍历 用于记录当前color// 设置背景if (bg) {  web_bg.style.background = bg;  web_bg.setAttribute("data-type", type);  if (animation) {    web_bg.style.animation = animation;  }}function setColor(opacity) {  // style="--light_bg_color: rgb(255, 255, 255,.3);--dark_bg_color: rgba(18,18,18,.2);"  var light_bg_color = "--light_bg_color: rgb(255, 255, 255," + opacity + ");";  var dark_bg_color = "--dark_bg_color: rgba(18,18,18," + opacity + ");";  content_inner.setAttribute("style", light_bg_color + dark_bg_color);}setColor(opacity);]]></content>
-    
-    
-      
-      
-    <summary type="html">var mobile_sidebar_menus = document.getElementById(&quot;mobile-sidebar-menus&quot;);
-var menus_item_child = mobile_sidebar_menus.getElementsByClassNa</summary>
       
     
     

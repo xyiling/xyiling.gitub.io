@@ -1,3 +1,5 @@
+https://github.com/xyiling/xyiling.github.io/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/
+https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/
 https://github.com/xyiling/xyiling.github.io/categories/index.html
 https://github.com/xyiling/xyiling.github.io/2023/12/22/http%E5%8D%8F%E8%AE%AE/
 https://github.com/xyiling/xyiling.github.io/2024/07/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/
@@ -26,3 +28,4 @@ https://github.com/xyiling/xyiling.github.io/2023/12/19/%E6%B6%88%E6%81%AF%E9%98
 https://github.com/xyiling/xyiling.github.io/2023/12/19/linux%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/
 https://github.com/xyiling/xyiling.github.io/2023/12/12/python%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/
 https://github.com/xyiling/xyiling.github.io
+https://github.com/xyiling/xyiling.github.io/categories/java/

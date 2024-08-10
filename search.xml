@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>计算机网络-物理层概念</title>
+      <link href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/"/>
+      <url>/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、物理层概念总结"><a href="#一、物理层概念总结" class="headerlink" title="一、物理层概念总结"></a>一、物理层概念总结</h2><h3 id="1-信号、信源、信宿、码元、波特"><a href="#1-信号、信源、信宿、码元、波特" class="headerlink" title="1. 信号、信源、信宿、码元、波特"></a>1. 信号、信源、信宿、码元、波特</h3><p>信号：数据；</p><p>信源：信息发送方；</p><p>信宿：信息接收方；</p><p>码元：与电压跳变相关，参考<a href="###码元和比特">码元和比特</a></p><h3 id="2-传输速率"><a href="#2-传输速率" class="headerlink" title="2. 传输速率"></a>2. 传输速率</h3><h4 id="2-1-数据传输速率"><a href="#2-1-数据传输速率" class="headerlink" title="2.1 数据传输速率"></a>2.1 数据传输速率</h4><p>秒为单位，1kb/s=1000bits/s，k为1000（在存储领域，1kb=1024b）</p><h4 id="2-2-码元传输速率"><a href="#2-2-码元传输速率" class="headerlink" title="2.2 码元传输速率"></a>2.2 码元传输速率</h4><p>秒为单位，Baud/s</p><h3 id="3-编码和调制"><a href="#3-编码和调制" class="headerlink" title="3. 编码和调制"></a>3. 编码和调制</h3><h4 id="3-1-编码"><a href="#3-1-编码" class="headerlink" title="3.1 编码"></a>3.1 编码</h4><p>用于将数字或模拟信号编码成数字信号的技术。</p><ol><li><p>归零编码</p><p><strong>1先高后低，0一直都是低电平</strong></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+      -+</span><br><span class="line">  +- ---  +- --- --- ---</span><br></pre></td></tr></table></figure></li></ol><ol><li><p>非归零编码</p><p><strong>1为高电平，0为低电平</strong></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> ---     ---</span><br><span class="line">     ---     --- --- ---</span><br></pre></td></tr></table></figure></li><li><p>反向归零编码</p><p><strong>0为高电平，1先低后高</strong></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line">  +- ---  +-  --- --- ---</span><br><span class="line"> -+      -+ </span><br></pre></td></tr></table></figure></li><li><p>曼彻斯特编码</p><p><strong>1先高后低，0先低后高（或者相反）</strong></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+   +- -+   +-  +-  +-</span><br><span class="line">  +- -+   +- -+  -+  -+</span><br></pre></td></tr></table></figure></li><li><p>差分曼彻斯特编码</p><p>相同则<strong>不变电压</strong></p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+  -+  -+  -+   +- -+</span><br><span class="line">  +-  +-  +-  +- -+   +-</span><br></pre></td></tr></table></figure></li></ol><h4 id="3-2-调制"><a href="#3-2-调制" class="headerlink" title="3.2 调制"></a>3.2 调制</h4><p>用于将数字信号或模拟信号编程模拟信号的技术</p><ol><li>调幅 调整 1 的表现方式，以非归零编码为例，原本1是直线，调幅后变成sin函数</li><li>调相 调整 1 和 0 的数值关系，如1是sinx，0是-sinx</li><li>调频 调整 1 和 0 的频率，通过不同的频率识别0和1</li><li>调幅+调频 4种幅度、4种频率，得到16种不同的码元，也就是需要$\log_{2}^{16}=4$bit来表示一个码元，如果码元传输速率是1Baud/s，那转换成比特传输速率则是4b/s。</li></ol><h3 id="4-数据交换网络"><a href="#4-数据交换网络" class="headerlink" title="4. 数据交换网络"></a>4. 数据交换网络</h3><h3 id="4-1-电路交换"><a href="#4-1-电路交换" class="headerlink" title="4.1 电路交换"></a>4.1 电路交换</h3><p>整体过程：建立连接—&gt;数据通信—&gt;释放连接</p><p>适用情况：数字信号、模拟信号；高实时性，大量数据</p><p>优点：数据按顺序发送和接收，高实时性，全双工</p><h3 id="4-2-报文交换"><a href="#4-2-报文交换" class="headerlink" title="4.2 报文交换"></a>4.2 报文交换</h3><ol><li><p>不建立通信链路，发送数据报文到路由表记录有的结点。</p></li><li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p></li></ol><h3 id="4-3-分组交换"><a href="#4-3-分组交换" class="headerlink" title="4.3 分组交换"></a>4.3 分组交换</h3><ol><li><p>不建立通信链路，根据路由表发送到网络结点。</p></li><li><p>比报文交换一次性发送的数据量更小（通常128b），延迟更低，稳定性更高，信道利用率也更高。</p></li><li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p></li></ol><h3 id="4-4-虚电路"><a href="#4-4-虚电路" class="headerlink" title="4.4 虚电路"></a>4.4 虚电路</h3><p>端到端建立一条多个结点的虚拟链路，一旦设备错误需要重新建立整条虚电路。</p><h2 id="二、物理层设备"><a href="#二、物理层设备" class="headerlink" title="二、物理层设备"></a>二、物理层设备</h2><ol><li><p>中继器</p><p>两台设备网络一致，可以使用不一致的物理信道。</p></li><li><p>集线器</p><p>多台设备网络一致，可以使用不一致的物理信道，<strong>机器越多网速越慢</strong>；</p><p>分割冲突域。</p></li></ol><h3 id="物理层协议"><a href="#物理层协议" class="headerlink" title="物理层协议"></a>物理层协议</h3><h2 id="三、补充概念"><a href="#三、补充概念" class="headerlink" title="三、补充概念"></a>三、补充概念</h2><h3 id="码元和比特"><a href="#码元和比特" class="headerlink" title="码元和比特"></a>码元和比特</h3><p>一个时间单位内电压变换种类，由此得到码元和比特的关系是bit=$\log_{2}^{k}$Baud</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 交换网络 </category>
+          
+          <category> 帧传输 </category>
+          
+          <category> 信号 </category>
+          
+          <category> 编码 </category>
+          
+          <category> 调制 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 交换网络, 帧传输, 信号, 编码, 调制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>shell脚本学习笔记</title>
       <link href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -379,9 +412,21 @@
       <link href="/2023/12/22/%E7%BD%91%E7%BB%9C%E5%B1%82ip%E5%8D%8F%E8%AE%AE/"/>
       <url>/2023/12/22/%E7%BD%91%E7%BB%9C%E5%B1%82ip%E5%8D%8F%E8%AE%AE/</url>
       
-        <content type="html"><![CDATA[<h1 id="网络层IP协议"><a href="#网络层IP协议" class="headerlink" title="网络层IP协议"></a>网络层IP协议</h1><h2 id="IP协议结构"><a href="#IP协议结构" class="headerlink" title="IP协议结构"></a>IP协议结构</h2><p><img src="/blogs/sfzoz81v.bmp" alt="ip协议结构图"><br>字段详细说明</p><ol><li>Version（版本号）：IP 协议版本号。目前只有两个版本：IPv4 和 IPv6</li><li>HeaderLength（IP 协议头部长度）：IP 协议头部的长度，单位字节（32bit）需要这个值是因为任选字段的长度是可变的，这个字段占 4bit（最多能表示 15 个 32bit 的的字，即 4*15&#x3D;60 个字节的首部长度），因此 IP 头部最多有 60 字节长度。正常的长度是 20 字节；如果有额外的 IP 的 options 选项，还得加上 option 的长度。</li><li>TypeofService (服务类型)：标示包传输优先级。总共 8 位，是由 3 个优先权位（不再使用），4 个 TOS 位，1 个固定的 0 组成。<br>4 个 TOS 位：最新延迟、最大吞吐量、最高可靠性、最小成本，只能 4 选一。</li><li>TotalLength（包长度）：整个 IP 包的长度，16 位，最大可以标示 65536 个字节，TotalLength-HeaderLength &#x3D; 数据长度。通过 HeaderLength 和 TotalLength 就可以知道数据的起始位置和结束位置。</li><li>Identifier（标识符）：网络中转发的 IP 报文的长度可以不同，但如果报文长度超过了数据链路所支持的最大长度，则报文就需要分割成若干个小的片段才能在链路上传输。比如以太网帧中数据最大长度（MTU）为 1500 字节，大于 MTU 的都会被分割，被分割的每个包都有相同的一个值，表示这是同一个 ip 包。</li><li>Flag（标志位）：标志字段在 IP 报头中占 3 位。</li></ol><ul><li>第 1 位作为保留；</li><li>第 2 位，分段，是否允许分片；（如果不允许分片，包超过了数据连路支持的最大长度，则丢弃该包，返回发送者一个 ICMP 错误）</li><li>第 3 位，更多分段。表示是否最后一个分片。</li></ul><p>当目的主机接收到一个 IP 数据报时，会首先查看该数据报的标识符，并且检查标志位的第 3 位是置 0 或置 1，以确定是否还有更多的分段。如果还有后续报文，接收主机则将接收到的报文放在缓存直到接收完所有具有相同标识符的数据报，然后再进行重组。</p><ol start="7"><li>FragmentedOffset（偏移量）：当某个 IP 大包分成多片时，各个分片是不按顺序达到目的地的，IP 包根据分片的偏移量进行重组包。（跟 TCP 原理一样）</li><li>（TimetoLive）生存时间：表示数据包经过的路由器个数。如果网络上有些路由器的路由表配置不合理，路由寻址可能会导致死循环，数据包会一直循环传输。IP 包发送的时候可以设置一个 TTL 值，比如 TTL&#x3D;64，没经过一个路由器 TTL 减 1，减到 0 还没到到目的地，路由器会抛弃这个 IP 包，并使用一个 ICMP 消息通知发送方。</li><li>Protocal（协议）：协议类型 1：ICMP，2：IGMP，6：TCP，17：UDP。</li><li>HeaderCheckSum（首部校验和）：校验 IP 协议头，判断 IP 协议头是否正确传输。</li><li>SourceAddress（源 IP）：请求方 IP</li><li>DistinationAddress（目的 IP）：响应方 IP</li><li>Options（可选字段）：IP 支持很多可选选项</li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="IP协议结构"><a href="#IP协议结构" class="headerlink" title="IP协议结构"></a>IP协议结构</h2><p><img src="sfzoz81v.bmp" alt="ip协议结构图"><br>字段详细说明</p><pre><code>1. Version（版本号）：IP 协议版本号。目前只有两个版本：IPv4 和 IPv62. HeaderLength（IP 协议头部长度）：IP 协议头部的长度，单位字节（32bit）需要这个值是因为任选字段的长度是可变的，这个字段占 4bit（最多能表示 15 个 32bit 的的字，即 4*15=60 个字节的首部长度），因此 IP 头部最多有 60 字节长度。正常的长度是 20 字节；如果有额外的 IP 的 options 选项，还得加上 option 的长度。   1. TypeofService (服务类型)：标示包传输优先级。总共 8 位，是由 3 个优先权位（不再使用），4 个 TOS 位，1 个固定的 0 组成。    4 个 TOS 位：最新延迟、最大吞吐量、最高可靠性、最小成本，只能 4 选一。3. TotalLength（包长度）：整个 IP 包的长度，16 位，最大可以标示 65536 个字节，TotalLength-HeaderLength = 数据长度。通过 HeaderLength 和 TotalLength 就可以知道数据的起始位置和结束位置。4. Identifier（标识符）：网络中转发的 IP 报文的长度可以不同，但如果报文长度超过了数据链路所支持的最大长度，则报文就需要分割成若干个小的片段才能在链路上传输。比如以太网帧中数据最大长度（MTU）为 1500 字节，大于 MTU 的都会被分割，被分割的每个包都有相同的一个值，表示这是同一个 ip 包。5. Flag（标志位）：标志字段在 IP 报头中占 3 位。   - 第 1 位作为保留；   - 第 2 位，分段，是否允许分片；（如果不允许分片，包超过了数据连路支持的最大长度，则丢弃该包，返回发送者一个 ICMP 错误）   - 第 3 位，更多分段。表示是否最后一个分片。</code></pre><p>当目的主机接收到一个 IP 数据报时，会首先查看该数据报的标识符，并且检查标志位的第 3 位是置 0 或置 1，以确定是否还有更多的分段。如果还有后续报文，接收主机则将接收到的报文放在缓存直到接收完所有具有相同标识符的数据报，然后再进行重组。</p><pre><code>1. FragmentedOffset（偏移量）：当某个 IP 大包分成多片时，各个分片是不按顺序达到目的地的，IP 包根据分片的偏移量进行重组包。（跟 TCP 原理一样）2. （TimetoLive）生存时间：表示数据包经过的路由器个数。如果网络上有些路由器的路由表配置不合理，路由寻址可能会导致死循环，数据包会一直循环传输。IP 包发送的时候可以设置一个 TTL 值，比如 TTL=64，没经过一个路由器 TTL 减 1，减到 0 还没到到目的地，路由器会抛弃这个 IP 包，并使用一个 ICMP 消息通知发送方。3. Protocal（协议）：协议类型 1：ICMP，2：IGMP，6：TCP，17：UDP。4.  HeaderCheckSum（首部校验和）：校验 IP 协议头，判断 IP 协议头是否正确传输。5.  SourceAddress（源 IP）：请求方 IP6.  DistinationAddress（目的 IP）：响应方 IP7.  Options（可选字段）：IP 支持很多可选选项</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IP, 头部结构, 网络层 </tag>
+            
+        </tags>
       
     </entry>
     

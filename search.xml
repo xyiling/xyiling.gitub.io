@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>搭建python项目</title>
+      <link href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="虚拟环境venv"><a href="#虚拟环境venv" class="headerlink" title="虚拟环境venv"></a>虚拟环境venv</h2><p>基于包管理和包版本，不同版本的包如果都放在全局目录，会导致不同的项目采用了相同版本的包，而一些项目只能用某个版本；<br>包放在全局目录，导致包污染，使用虚拟环境解决。</p><h2 id="创建并启用虚拟环境"><a href="#创建并启用虚拟环境" class="headerlink" title="创建并启用虚拟环境"></a>创建并启用虚拟环境</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv .venv</span><br><span class="line"><span class="built_in">source</span> .venv/bin/activate</span><br><span class="line"><span class="comment"># source .venv/bin/activate.fish # fish 和bash/zsh语法不同，因此有专门的脚本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">(.venv) xyl@VM-20-8-ubuntu ~/p/xtools&gt; <span class="built_in">which</span> pip</span><br><span class="line">/home/xyl/py/xtools/.venv/bin/pip <span class="comment"># 使用的是虚拟环境的 pip包管理器</span></span><br></pre></td></tr></table></figure><h2 id="poetry-包管理器"><a href="#poetry-包管理器" class="headerlink" title="poetry 包管理器"></a>poetry 包管理器</h2><p>pip的缺陷：安装包时可以把需要的其他依赖拉取下来，但删除时只删除一个。poetry可以解决这个问题</p><h3 id="poetry的命令"><a href="#poetry的命令" class="headerlink" title="poetry的命令"></a>poetry的命令</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 服务器项目 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>grep、sed、awk与正则</title>
+      <link href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/"/>
+      <url>/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h2><h3 id="1-基础正则"><a href="#1-基础正则" class="headerlink" title="1. 基础正则"></a>1. 基础正则</h3><ol><li>grep命令支持基础正则。</li><li>grep命令后面跟’正则表达式’，操作的文件可以来自管道或文件。</li></ol><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -o <span class="string">&#x27;\([a-zA-Z]+\),&#x27;</span> regexp.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在regexp.txt中找出(aabf),类似内容</span></span><br></pre></td></tr></table></figure><h3 id="2-扩展正则"><a href="#2-扩展正则" class="headerlink" title="2.扩展正则"></a>2.扩展正则</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><h2 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络-物理层概念</title>
       <link href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/"/>
       <url>/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/</url>
@@ -214,11 +254,11 @@
     
     
     <entry>
-      <title>操作系统概念</title>
+      <title>操作系统</title>
       <link href="/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/"/>
       <url>/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/</url>
       
-        <content type="html"><![CDATA[<h1 id="操作系统概念"><a href="#操作系统概念" class="headerlink" title="操作系统概念"></a>操作系统概念</h1><h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><h3 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h3><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存置换策略"><a href="#内存置换策略" class="headerlink" title="内存置换策略"></a>内存置换策略</h3><h3 id="belady现象"><a href="#belady现象" class="headerlink" title="belady现象"></a>belady现象</h3><h2 id="CPU管理"><a href="#CPU管理" class="headerlink" title="CPU管理"></a>CPU管理</h2><h2 id="io管理"><a href="#io管理" class="headerlink" title="io管理"></a>io管理</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><h3 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h3><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存置换策略"><a href="#内存置换策略" class="headerlink" title="内存置换策略"></a>内存置换策略</h3><h3 id="belady现象"><a href="#belady现象" class="headerlink" title="belady现象"></a>belady现象</h3><h2 id="CPU管理"><a href="#CPU管理" class="headerlink" title="CPU管理"></a>CPU管理</h2><h2 id="io管理"><a href="#io管理" class="headerlink" title="io管理"></a>io管理</h2>]]></content>
       
       
       

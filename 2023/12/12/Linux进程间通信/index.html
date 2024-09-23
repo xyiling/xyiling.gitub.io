@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Linux进程间通信 | xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="不同进程的地址空间是隔离的。A 进程的地址 0x4000 和 B 进程的 0x4000 之间没有任何关系。如果要进行进程间通信，最常用的做法是让进程之间通过 127.0.0.1 或者是 Unix Domain Socket 等本机网络手段进行数据的传输。这个方案在传输的数据量较小的时候工作是很不错的。但如果进程间想共享的数据特别大，比如说几个 GB，那如果使用网络 IO 方案的话，就会涉及到大量的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux进程间通信">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/2023/12/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="不同进程的地址空间是隔离的。A 进程的地址 0x4000 和 B 进程的 0x4000 之间没有任何关系。如果要进行进程间通信，最常用的做法是让进程之间通过 127.0.0.1 或者是 Unix Domain Socket 等本机网络手段进行数据的传输。这个方案在传输的数据量较小的时候工作是很不错的。但如果进程间想共享的数据特别大，比如说几个 GB，那如果使用网络 IO 方案的话，就会涉及到大量的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxsghs13X2ueOHsvh0O0O3JSdby9EpDbK2giaA5IN0ib4D3AdXsjw8GTWA/640?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxS5xjbLGFZ5ZiaDmdF9iccFUwPKGc3RpdYOzRhALCcaORtS8zxflCyByw/640?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxPt0XSxtJ5KM6XoyTNGx2oY4lCKGcQ3eBxfRufjnx0Envfg0PuXbp0A/640?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxHku9TqiaPZeMFIr9E10kJuTrruiaxJbSJF9ibGgeyENYYhEeuCf9CN03Q/640?wx_fmt=png&amp;from=appmsg">
+<meta property="article:published_time" content="2023-12-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-05T03:20:26.016Z">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="进步, 执念, 编程开发, 计算机科学, 计算机图形学, ai, 深度学习, 发疯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxsghs13X2ueOHsvh0O0O3JSdby9EpDbK2giaA5IN0ib4D3AdXsjw8GTWA/640?wx_fmt=png&amp;from=appmsg">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Linux进程间通信" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="article-date">
+  <time class="dt-published" datetime="2023-12-11T16:00:00.000Z" itemprop="datePublished">2023-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Linux进程间通信
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>不同进程的地址空间是隔离的。A 进程的地址 0x4000 和 B 进程的 0x4000 之间没有任何关系。如果要进行进程间通信，最常用的做法是让进程之间通过 127.0.0.1 或者是 Unix Domain Socket 等本机网络手段进行数据的传输。这个方案在传输的数据量较小的时候工作是很不错的。但如果进程间想共享的数据特别大，比如说几个 GB，那如果使用网络 IO 方案的话，就会涉及到大量的内存拷贝的开销，导致比较低的程序性能。这时可以采用进程间<strong><u><em>共享内存</em></u></strong>的方法来在通信时避免内存拷贝。</p>
+<h2 id="一、共享内存的使用方式"><a href="#一、共享内存的使用方式" class="headerlink" title="一、共享内存的使用方式"></a>一、共享内存的使用方式</h2><p>共享内存发送方进程的开发基本过程是调用 memfd_create 创建一个内存文件。然后通过 mmap 系统调用为这个内存文件申请一块<strong>共享内存</strong>。然后这个内存文件就可以写入数据了。最后把这个文件的句柄通过 Unix Domain Socket 的方式给接收方进程发送过去。</p>
+<p>下面是发送方的核心代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> &#123;</span><br><span class="line"> <span class="comment">// 创建内存文件</span></span><br><span class="line"> fd = memfd_create(<span class="string">&quot;Server memfd&quot;</span>, ...);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 为内存文件申请 MAP_SHARED 类型的内存</span></span><br><span class="line"> shm = mmap(<span class="literal">NULL</span>, shm_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 向共享内存中写入数据</span></span><br><span class="line"> <span class="built_in">sprintf</span>(shm, <span class="string">&quot;这段内容是保存在共享内存里的，接收方和发送方都能根据自己的fd访问到这块内容&quot;</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 把共享内存文件的句柄给接收方进程发送过去</span></span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">msghdr</span> <span class="title">msgh</span>;</span></span><br><span class="line"> *((<span class="type">int</span> *) CMSG_DATA(CMSG_FIRSTHDR(&amp;msgh))) = fd;</span><br><span class="line"> sendmsg(conn, &amp;msgh, <span class="number">0</span>);</span><br><span class="line"> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>共享内存接收方的工作过程是先用 Unix Domain Socket 连接上服务器，然后使用 recvmsg 就可以收到发送方发送过来的文件句柄。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> &#123;</span><br><span class="line">    <span class="comment">// 通过 Unix Domain Socket 连接发送方</span></span><br><span class="line">    connect(conn, (<span class="keyword">struct</span> sockaddr *)&amp;address, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_un));</span><br><span class="line">    <span class="comment">// 通过连接取出发送方发送过来的内存文件句柄</span></span><br><span class="line">    <span class="type">int</span> size = recvmsg(conn, &amp;msgh, <span class="number">0</span>);</span><br><span class="line">    fd = *((<span class="type">int</span> *) CMSG_DATA(cmsgh));</span><br><span class="line">    <span class="comment">// 读取共享文件中的内容</span></span><br><span class="line">    shm = mmap(<span class="literal">NULL</span>, shm_size, PROT_READ, MAP_PRIVATE, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;共享内存中的文件内容是: %s\n&quot;</span>, shm);</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样这两个进程都各自有一个文件句柄，在底层上是指向同一个内存文件的。这样就实现了发送方和接收方之间的内存文件共享了。</p>
+<p><img src="/img/loading.gif" data-original="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxsghs13X2ueOHsvh0O0O3JSdby9EpDbK2giaA5IN0ib4D3AdXsjw8GTWA/640?wx_fmt=png&amp;from=appmsg" alt="img"></p>
+<p>接下来深入地分析 memfd_create、 mmap、以及 Unix Domain socket sendmsg 和 recvmsg 的底层工作原理，来看看它们是如何配合来实现跨进程共享内存的。</p>
+<h2 id="二、共享内存文件原理"><a href="#二、共享内存文件原理" class="headerlink" title="二、共享内存文件原理"></a>二、共享内存文件原理</h2><p>在发送方发送文件之前，需要先通过 memfd_create 来创建一个内存文件，然后再使用 mmap 为其分配内存。</p>
+<h3 id="2-1-创建内存文件"><a href="#2-1-创建内存文件" class="headerlink" title="2.1 创建内存文件"></a>2.1 创建内存文件</h3><p>其中 memfd_create 函数是一个系统调用。内核中它的主要逻辑有两个，一是调用 get_unused_fd_flags 申请一个没使用过的文件句柄，二是调用 shmem_file_setup 创建一个共享内存文件。</p>
+<p><img src="/img/loading.gif" data-original="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxS5xjbLGFZ5ZiaDmdF9iccFUwPKGc3RpdYOzRhALCcaORtS8zxflCyByw/640?wx_fmt=png&amp;from=appmsg" alt="img"></p>
+<p> memfd_create 的源码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file:mm/memfd.c</span></span><br><span class="line">SYSCALL_DEFINE2(memfd_create,<span class="type">const</span> <span class="type">char</span> __user *, uname, <span class="type">unsigned</span> <span class="type">int</span>, flags)</span><br><span class="line">&#123;</span><br><span class="line"> ...</span><br><span class="line"> <span class="comment">// 申请一个未使用过的文件句柄</span></span><br><span class="line"> fd = get_unused_fd_flags((flags &amp; MFD_CLOEXEC) ? O_CLOEXEC : <span class="number">0</span>);</span><br><span class="line"> <span class="comment">// 创建一个共享内存的文件</span></span><br><span class="line"> file = shmem_file_setup(name, <span class="number">0</span>, VM_NORESERVE);</span><br><span class="line"></span><br><span class="line"> fd_install(fd, file);</span><br><span class="line"> <span class="keyword">return</span> fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中在 shmem_file_setup 函数中又调用了 __shmem_file_setup。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file:mm/shmem.c</span></span><br><span class="line"><span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">file</span> *__<span class="title">shmem_file_setup</span>(<span class="keyword">struct</span> <span class="title">vfsmount</span> *<span class="title">mnt</span>, <span class="title">const</span> <span class="title">char</span> *<span class="title">name</span>, ...)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"> ...</span><br><span class="line"> <span class="comment">// 申请一个 inode</span></span><br><span class="line"> inode = shmem_get_inode(mnt-&gt;mnt_sb, <span class="literal">NULL</span>, S_IFREG | S_IRWXUGO, <span class="number">0</span>, flags);</span><br><span class="line"> inode-&gt;i_flags |= i_flags;</span><br><span class="line"> inode-&gt;i_size = size;</span><br><span class="line"></span><br><span class="line"> ...</span><br><span class="line"> <span class="comment">// 创建一个文件</span></span><br><span class="line"> res = alloc_file_pseudo(inode, mnt, name, O_RDWR,</span><br><span class="line">    &amp;shmem_file_operations);</span><br><span class="line"> <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>磁盘文件在内核的实现中是由 inode 和 struct file 对象一起组成的。共享内存文件也一样，__shmem_file_setup 中就是先申请了一个 inode，然后再调用 alloc_file_pseudo 创建一个文件。值得注意的是，这个文件并非是磁盘上的文件，而只是在内存里的。</p>
+<h3 id="2-2-mmap申请内存"><a href="#2-2-mmap申请内存" class="headerlink" title="2.2 mmap申请内存"></a>2.2 mmap申请内存</h3><p><code>mmap</code>也是一个系统调用，开篇处调用它的时候传入的第三个<code>flag</code>参数是<code>MAP_SHARED</code>。这表示的是要通过<code>mmap</code>申请一块跨进程可共享的内存出来。<code>mmap</code>的实现入口在 arch/x86/kernel/sys_x86_64.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:arch/x86/kernel/sys_x86_64.c</span></span><br><span class="line">SYSCALL_DEFINE6(mmap, <span class="type">unsigned</span> <span class="type">long</span>, addr, ...)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">return</span> ksys_mmap_pgoff(addr, len, prot, flags, fd, off &gt;&gt; PAGE_SHIFT);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来的这个函数的调用链路如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL_DEFINE6(mmap</span><br><span class="line">-&gt; ksys_mmap_pgoff</span><br><span class="line">---&gt; vm_mmap_pgoff</span><br><span class="line">------&gt; do_mmap_pgoff</span><br><span class="line">--------&gt; do_mmap</span><br></pre></td></tr></table></figure>
+<p>在 do_mmap 函数中，对输入的 MAP_SHARED 进行了处理。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:mm/mmap.c</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">long</span> <span class="title function_">do_mmap</span><span class="params">(<span class="keyword">struct</span> file *file, <span class="type">unsigned</span> <span class="type">long</span> addr,</span></span><br><span class="line"><span class="params">   <span class="type">unsigned</span> <span class="type">long</span> len, <span class="type">unsigned</span> <span class="type">long</span> prot,</span></span><br><span class="line"><span class="params">   <span class="type">unsigned</span> <span class="type">long</span> flags, <span class="type">vm_flags_t</span> vm_flags,</span></span><br><span class="line"><span class="params">   <span class="type">unsigned</span> <span class="type">long</span> pgoff, <span class="type">unsigned</span> <span class="type">long</span> *populate,</span></span><br><span class="line"><span class="params">   <span class="keyword">struct</span> list_head *uf)</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span> * <span class="title">mm</span> =</span> current-&gt;mm;</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 如果包含 MAP_SHARED，则对要申请的虚拟内存设置一个 VM_SHARED</span></span><br><span class="line"> <span class="keyword">switch</span> (flags &amp; MAP_TYPE) &#123;</span><br><span class="line">  <span class="keyword">case</span> MAP_SHARED:</span><br><span class="line">  <span class="keyword">case</span> MAP_SHARED_VALIDATE:</span><br><span class="line">   vm_flags |= VM_SHARED | VM_MAYSHARE; </span><br><span class="line">   ... </span><br><span class="line"> &#125; </span><br><span class="line"> ... </span><br><span class="line"></span><br><span class="line"> addr = mmap_region(file, addr, len, vm_flags, pgoff, uf);</span><br><span class="line"> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果 flag 包含了 MAP_SHARED，则对要申请的虚拟内存设置一个 VM_SHARED。该标记指明的是要申请一个可以跨进程共享的内存块。接下来进入 mmap_region 中申请虚拟内存。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:mm/mmap.c</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">long</span> <span class="title function_">mmap_region</span><span class="params">(<span class="keyword">struct</span> file *file, ...)</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span> *<span class="title">mm</span> =</span> current-&gt;mm;</span><br><span class="line"> ......</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 申请虚拟内存vma</span></span><br><span class="line"> vma = vm_area_alloc(mm);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// vma初始化</span></span><br><span class="line"> vma-&gt;vm_start = addr;</span><br><span class="line"> vma-&gt;vm_end = addr + len;</span><br><span class="line"> vma-&gt;vm_flags = vm_flags;</span><br><span class="line"> vma-&gt;vm_page_prot = vm_get_page_prot(vm_flags);</span><br><span class="line"> vma-&gt;vm_pgoff = pgoff;</span><br><span class="line"> ......</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 加入到进程的虚拟内存 vma 链表中来</span></span><br><span class="line"> vma_link(mm, vma, prev, rb_link, rb_parent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进程的虚拟内存地址空间在内核底层中就是由这样一个个的 vma 来组成的。每一个 vma 都声明的是进程虚拟地址中的某一段地址范围已经分配出去了。在 mmap_region 函数中申请了 vma，并在内核中将其管理了起来。</p>
+<p>这里注意我们在申请共享内存的时候，给 vma 是带了 VM_SHARED 标记的。带了这个标记的 vma和普通的虚拟内存不一样。后面在发生缺页中断申请物理内存的时候，在不同的进程间是可以对应到同一块物理内存的。所以可以实现进程间的共享。</p>
+<p><img src="/img/loading.gif" data-original="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxPt0XSxtJ5KM6XoyTNGx2oY4lCKGcQ3eBxfRufjnx0Envfg0PuXbp0A/640?wx_fmt=png&amp;from=appmsg" alt="img"></p>
+<p>所以真正让进程之间可以共享内存的是这个带 VM_SHARED 的 vma。</p>
+<h2 id="三、发送方发送文件句柄"><a href="#三、发送方发送文件句柄" class="headerlink" title="三、发送方发送文件句柄"></a>三、发送方发送文件句柄</h2><p>发送方在使用 memfd_create 创建出来内存文件，并用 mmap 为其申请可跨进程共享的内存后。接着就可以通过 Unix Domain Socket 中对应的 sendmsg 方法将这个共享内存文件的句柄发送出来。如下是发送的代码示例。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">send_fd</span><span class="params">(<span class="type">int</span> conn, <span class="type">int</span> fd)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msghdr</span> <span class="title">msgh</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">iovec</span> <span class="title">iov</span>;</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把文件句柄放到消息中来</span></span><br><span class="line">    *((<span class="type">int</span> *) CMSG_DATA(CMSG_FIRSTHDR(&amp;msgh))) = fd;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送出去</span></span><br><span class="line">    sendmsg(conn, &amp;msgh, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>sendmsg 又是一个内核提供的系统调用，它位于 net/socket.c 文件中。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:net/socket.c</span></span><br><span class="line">SYSCALL_DEFINE3(sendmsg, <span class="type">int</span>, fd, <span class="keyword">struct</span> user_msghdr __user *, msg, <span class="type">unsigned</span> <span class="type">int</span>, flags)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">return</span> __sys_sendmsg(fd, msg, flags, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数的调用路径如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL_DEFINE3(sendmsg, ...)</span><br><span class="line">-&gt; __sys_sendmsg</span><br><span class="line">---&gt; ___sys_sendmsg</span><br><span class="line">-----&gt; ____sys_sendmsg</span><br><span class="line">-------&gt; sock_sendmsg</span><br><span class="line">---------&gt; sock_sendmsg_nosec</span><br><span class="line">-----------&gt; unix_stream_sendmsg</span><br></pre></td></tr></table></figure>
+<p>在 unix_stream_sendmsg 中执行了真正的发送。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:net/unix/af_unix.c </span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">unix_stream_sendmsg</span><span class="params">(<span class="keyword">struct</span> socket *sock, <span class="keyword">struct</span> msghdr *msg, ...)</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="comment">// 把文件描述符指向的文件信息复制到 scm_cookie 中</span></span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">scm_cookie</span> <span class="title">scm</span>;</span></span><br><span class="line"> scm_send(sock, msg, &amp;scm, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 不断构建数据包发送，直到发送完毕</span></span><br><span class="line">    <span class="keyword">while</span> (sent &lt; len) &#123;</span><br><span class="line">     <span class="comment">// 申请一块缓存区</span></span><br><span class="line">     skb = sock_alloc_send_pskb(sk, size - data_len, data_len,</span><br><span class="line">        msg-&gt;msg_flags &amp; MSG_DONTWAIT, &amp;err,</span><br><span class="line">        get_order(UNIX_SKB_FRAGS_SZ));</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 拷贝数据到 skb</span></span><br><span class="line">     err = unix_scm_to_skb(&amp;scm, skb, !fds_sent);</span><br><span class="line">     err = skb_copy_datagram_from_iter(skb, <span class="number">0</span>, &amp;msg-&gt;msg_iter, size);</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// 直接把 skb 放到对端的接收队列中</span></span><br><span class="line">     skb_queue_tail(&amp;other-&gt;sk_receive_queue, skb);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//发送完毕回调</span></span><br><span class="line">  other-&gt;sk_data_ready(other);</span><br><span class="line">  sent += size;</span><br><span class="line">     ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 unix_stream_sendmsg 中申请了个 skb 缓存区，然后把<strong>要发送的文件句柄</strong>等数据都塞到里面，最后调用 skb_queue_tail 直接把 skb 放到 Unix Domain Socket 连接另一端的接收队列中了。</p>
+<p>这里注意文件句柄只有在当前进程内才是有意义的。如果直接发送 fd 出去，接收方是没有办法使用的。所以在 scm_send 函数中，重要的逻辑<strong>是把 fd 对应的 struct file 的指针给找了出来，放到待发送的数据里面了</strong>。只有 file 这种内核级的对象接收方才能使用。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scm_send</span><br><span class="line">-&gt; __scm_send</span><br><span class="line">---&gt; scm_fp_copy</span><br></pre></td></tr></table></figure>
+<p>在 scm_fp_copy 中根据 fd 把 file 给找了出来。它的指针会被放到发送数据中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:net/core/scm.c</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">scm_fp_copy</span><span class="params">(<span class="keyword">struct</span> cmsghdr *cmsg, <span class="keyword">struct</span> scm_fp_list **fplp)</span></span><br><span class="line">&#123;</span><br><span class="line"> ...</span><br><span class="line"> <span class="comment">//把每一个要发送的 fd 对应的 file 给找出来</span></span><br><span class="line"> <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt; num; i++)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="type">int</span> fd = fdp[i];</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">file</span> *<span class="title">file</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fd &lt; <span class="number">0</span> || !(file = fget_raw(fd)))</span><br><span class="line">   <span class="keyword">return</span> -EBADF;</span><br><span class="line">  *fpp++ = file;</span><br><span class="line">  fpl-&gt;count++;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="四、接收方接收文件"><a href="#四、接收方接收文件" class="headerlink" title="四、接收方接收文件"></a>四、接收方接收文件</h3><p>接下来接收方就可以通过 recvmsg 来接收发送方发送过来的文件了。recvmsg 系统会调用到 unix_stream_read_generic 中，然后在这个函数中把 skb 给取出来。</p>
+<p><img src="/img/loading.gif" data-original="https://mmbiz.qpic.cn/sz_mmbiz_png/BBjAFF4hcwpfibKtKUONu125vkLvMX4gxHku9TqiaPZeMFIr9E10kJuTrruiaxJbSJF9ibGgeyENYYhEeuCf9CN03Q/640?wx_fmt=png&amp;from=appmsg" alt="img"></p>
+<p>下面是接收函数核心 unix_stream_read_generic 的源码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:net/unix/af_unix.c</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">unix_stream_read_generic</span><span class="params">(<span class="keyword">struct</span> unix_stream_read_state *state,</span></span><br><span class="line"><span class="params">        <span class="type">bool</span> freezable)</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="comment">// 拿出一个 skb</span></span><br><span class="line">  last = skb = skb_peek(&amp;sk-&gt;sk_receive_queue);</span><br><span class="line">  ...</span><br><span class="line"> &#125;</span><br><span class="line"> ...</span><br><span class="line"> <span class="keyword">if</span> (state-&gt;msg)</span><br><span class="line">  scm_recv(sock, state-&gt;msg, &amp;scm, flags);</span><br><span class="line"> <span class="keyword">return</span> copied ? : err;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 skb 拿出来后，还需要调用 scm_recv 来把 skb 中包含的文件给找出来。在 scm_recv 中调用 scm_detach_fds。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:net/core/scm.c</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">scm_detach_fds</span><span class="params">(<span class="keyword">struct</span> msghdr *msg, <span class="keyword">struct</span> scm_cookie *scm)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; fdmax; i++) &#123;</span><br><span class="line">  err = receive_fd_user(scm-&gt;fp-&gt;fp[i], cmsg_data + i, o_flags);</span><br><span class="line">  <span class="keyword">if</span> (err &lt; <span class="number">0</span>)</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 scm-&gt;fp-&gt;fp[i] 中包含的是发送方发送过来的 struct file 指针。这样文件就取出来了。当然 struct file 是个内核态的对象，用户没有办法使用。所以还需要再为其在新的进程中申请一个文件句柄，然后返回。本文来自公众号「开发内功修炼」。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file:fs/file.c</span></span><br><span class="line"><span class="type">int</span> __receive_fd(<span class="keyword">struct</span> file *file, <span class="type">int</span> __user *ufd, <span class="type">unsigned</span> <span class="type">int</span> o_flags)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="comment">//申请一个新的文件描述符</span></span><br><span class="line"> new_fd = get_unused_fd_flags(o_flags);</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line"> <span class="comment">//关联文件</span></span><br><span class="line"> fd_install(new_fd, get_file(file));</span><br><span class="line"> <span class="keyword">return</span> new_fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>共享内存发送方进程的开发过程基本分 memfd_create 创建内存文件、mmap 申请共享内存、Unix Domain Socket 发送文件句柄三步。</p>
+<ul>
+<li>第一步，memfd_create 系统调用的主要逻辑有两个，一是调用 get_unused_fd_flags 申请一个没使用过的文件句柄，二是调用 shmem_file_setup 创建一个共享内存文件。</li>
+<li>第二步，mmap 系统调用在调用它的时候传入的第三个 flag 参数是 MAP_SHARED，该参数是申请一块跨进程可共享访问的物理内存。</li>
+<li>第三步，接着通过 Unix Domain Socket 中对应的 sendmsg 方法将这个共享内存文件的句柄发送出去。在发送时，把文件句柄对应的 struct file 指针找到并放到要封装的 skb 数据包中了。</li>
+</ul>
+<p>接收方进程的主要实现原理是 recvmsg 系统调用。在这个系统调用中，内核会把发送方发送过来的 struct file 指针取出来，然后再在当前进程下为其申请一个新的文件句柄。这个文件句柄返回给用户进程后，用户进程就可以用它来和另外一个进程共享地访问同一块内存了。</p>
+<p>总体来看，共享内存本质上共享的是内核对象 struct file，通过在不同的进程之间使用同一个 struct file 来实现的共享。当然也得需要在虚拟内存对象 vma 带上 VM_SHARED 标记来支持。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2023/12/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" data-id="cm1em9i5o00012jwphrmee1tu" data-title="Linux进程间通信" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/19/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          消息队列思想和实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/12/python%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">python入门语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>

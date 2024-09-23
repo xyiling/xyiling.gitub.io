@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java序列化和反序列化 | xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="序列化和反序列化 序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或经由网络中发送），以留待后续在相同或另一台计算机环境中，能恢复原先状态的过程。依照序列化格式重新获取字节的结果时，可以利用它来产生与原始对象相同语义的副本。对于许多对象，像是使用大量引用的复杂对象，这种序列化重建的过程并不容易。面向对象中的对象序列化，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java序列化和反序列化">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="序列化和反序列化 序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或经由网络中发送），以留待后续在相同或另一台计算机环境中，能恢复原先状态的过程。依照序列化格式重新获取字节的结果时，可以利用它来产生与原始对象相同语义的副本。对于许多对象，像是使用大量引用的复杂对象，这种序列化重建的过程并不容易。面向对象中的对象序列化，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-01T09:03:14.430Z">
+<meta property="article:modified_time" content="2024-08-01T09:46:21.910Z">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="进步, 执念, 编程开发, 计算机科学, 计算机图形学, ai, 深度学习, 发疯">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java序列化和反序列化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2024-08-01T09:03:14.430Z" itemprop="datePublished">2024-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java序列化和反序列化
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h2><blockquote>
+<p>序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或经由网络中发送），以留待后续在相同或另一台计算机环境中，能恢复原先状态的过程。依照序列化格式重新获取字节的结果时，可以利用它来产生与原始对象相同语义的副本。对于许多对象，像是使用大量引用的复杂对象，这种序列化重建的过程并不容易。面向对象中的对象序列化，并不概括之前原始对象所关系的函数。这种过程也称为对象编组（marshalling）。从一系列字节提取数据结构的反向操作，是反序列化（也称为解编组、deserialization、unmarshalling）。</p>
+</blockquote>
+<ul>
+<li>序列化：将数据结构或对象转换成二进制字节流的过程；</li>
+<li>反序列化：将在序列化过程中所生成的二进制字节流转换成数据结构或者对象的过程。</li>
+</ul>
+<p>对于 Java 这种面向对象编程语言来说，序列化的都是对象（Object）也就是实例化后的类(Class)，但是在 C++这种半面向对象的语言中，struct(结构体)定义的是数据结构类型，而 class 对应的是对象类型。</p>
+<p>下面是序列化和反序列化常见应用场景：</p>
+<ul>
+<li>对象在进行网络传输（比如远程方法调用 RPC 的时候）之前需要先被序列化，接收到序列化的对象之后需要再进行反序列化；</li>
+<li>将对象存储到文件之前需要进行序列化，将对象从文件中读取出来需要进行反序列化；</li>
+<li>将对象存储到数据库（如 Redis）之前需要用到序列化，将对象从缓存数据库中读取出来需要反序列化；</li>
+<li>将对象存储到内存之前需要进行序列化，从内存中读取出来之后需要进行反序列化。</li>
+</ul>
+<h2 id="常见序列化协议"><a href="#常见序列化协议" class="headerlink" title="常见序列化协议"></a>常见序列化协议</h2><p>JDK自带的序列化方式一般不会用，因为序列化效率低并且存在安全问题。<br>比较常用的序列化协议有：Hessian、Kryo、Protobuf、ProtoStuff，这些都是基于二进制的序列化协议。像<code>JSON</code>和<code>XML</code>这种属于文本类序列化方式。虽然可读性比较好，但是性能较差，一般不会选择。</p>
+<h3 id="JDK自带的序列化方式"><a href="#JDK自带的序列化方式" class="headerlink" title="JDK自带的序列化方式"></a>JDK自带的序列化方式</h3><p>自带的序列化，只需实现 java.io.Serializable接口即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1905122041950251207L</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="serialVersionUID-有什么作用"><a href="#serialVersionUID-有什么作用" class="headerlink" title="serialVersionUID 有什么作用"></a>serialVersionUID 有什么作用</h4><p>序列化号<code>serialVersionUID</code>属于版本控制的作用。反序列化时，会检查<code>serialVersionUID</code>是否和当前类的<code>serialVersionUID</code>一致。如果<code>serialVersionUID</code>不一致则会抛出<code>InvalidClassException</code>异常。强烈推荐每个序列化类都手动指定其<code>serialVersionUID</code>，如果不手动指定，那么编译器会动态生成默认的<code>serialVersionUID</code>。</p>
+<h4 id="serialVersionUID-不是被-static-变量修饰了吗？为什么还会被“序列化”？"><a href="#serialVersionUID-不是被-static-变量修饰了吗？为什么还会被“序列化”？" class="headerlink" title="serialVersionUID 不是被 static 变量修饰了吗？为什么还会被“序列化”？"></a>serialVersionUID 不是被 static 变量修饰了吗？为什么还会被“序列化”？</h4><p><code>static</code>修饰的变量是静态变量，属于类而非类的实例，本身是不会被序列化的。然而，<code>serialVersionUID</code>是一个特例，<code>serialVersionUID</code>的序列化做了特殊处理。当一个对象被序列化时，serialVersionUID 会被写入到序列化的二进制流中；在反序列化时，也会解析它并做一致性判断，以此来验证序列化对象的版本一致性。如果两者不匹配，反序列化过程将抛出<code>InvalidClassException</code>，因为这通常意味着序列化的类的定义已经发生了更改，可能不再兼容。</p>
+<h4 id="使用transient避免被序列化"><a href="#使用transient避免被序列化" class="headerlink" title="使用transient避免被序列化"></a>使用transient避免被序列化</h4><p><code>transient</code>只修饰变量。修饰的变量在序列化后的值都是对应类型的默认值，如int类型默认为0。</p>
+<blockquote>
+<p>static 变量不属于任何对象，不会被序列化</p>
+</blockquote>
+<h4 id="为什么不推荐使用Java自带的序列化工具？"><a href="#为什么不推荐使用Java自带的序列化工具？" class="headerlink" title="为什么不推荐使用Java自带的序列化工具？"></a>为什么不推荐使用Java自带的序列化工具？</h4><ul>
+<li>不支持跨语言调用: 如果调用的是其他语言开发的服务的时候就不支持了。</li>
+<li>性能差：相比于其他序列化框架性能更低，主要原因是序列化之后的字节数组体积较大，导致传输成本加大。</li>
+<li>存在安全问题：序列化和反序列化本身并不存在问题。但当输入的反序列化的数据可被用户控制，那么攻击者即可通过构造恶意输入，让反序列化产生非预期的对象，在此过程中执行构造的任意代码。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="cm1em9i5y000b2jwp440i660q" data-title="Java序列化和反序列化" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          shell脚本学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">B+树概念</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>

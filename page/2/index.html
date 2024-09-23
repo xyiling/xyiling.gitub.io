@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="cxx、Java、python、rust、r、汇编、计组、计网、os、数据结构、算法、web，都搞，论文也读，网课也看，笔记也会记在这，还会收集各种资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xyl的个人博客">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/page/2/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="cxx、Java、python、rust、r、汇编、计组、计网、os、数据结构、算法、web，都搞，论文也读，网课也看，笔记也会记在这，还会收集各种资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="进步, 执念, 编程开发, 计算机科学, 计算机图形学, ai, 深度学习, 发疯">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-archlinux安装总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/archlinux%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.112Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="archlinux安装总结"><a href="#archlinux安装总结" class="headerlink" title="archlinux安装总结"></a>archlinux安装总结</h1><h2 id="一、下载iso文件"><a href="#一、下载iso文件" class="headerlink" title="一、下载iso文件"></a>一、下载iso文件</h2><h2 id="二、校验签名"><a href="#二、校验签名" class="headerlink" title="二、校验签名"></a>二、校验签名</h2><p>通过http下载到的ISO镜像文件，很可能会受到故意的污染，带来潜在的威胁。</p>
+<ol>
+<li><p>安装<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/GnuPG">GnuPG</a></p>
+<p>  GnuPG是一个完整的、免费的OpenPGP标准实现，支持对数据的加密和签名。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://mirrors.nju.edu.cn/archlinux/iso/2024.03.29/archlinux-2024.03.29-x86_64.iso.sig">下载签名</a></p>
+<p>  校验签名</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="三、正式安装"><a href="#三、正式安装" class="headerlink" title="三、正式安装"></a>三、正式安装</h2><ol>
+<li><p>关闭安全启动</p>
+<p>  安装完成后可以重新开启安全启动。</p>
+</li>
+<li><p>设置控制台键盘和字体</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfont ter-132b <span class="comment"># archlinux控制台字体存放在/usr/share/kbd/consolefonts/，通过setfont fontname修改控制台点阵字体</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>校验启动模式（UEFI、BIOS）</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/firmware/efi/fw_platform_size</span><br></pre></td></tr></table></figure>
+<p>  如果返回64，代表运行在32位uefi模式环境下;如果返回32，代表运行在32位uefi环境下。只要支持uefi，BootLoader会使用systemd启动系统。</p>
+<p>  如果文件不存在，代表当前环境可能是BIOS（或者说是csm）。</p>
+<p>  如果两者都不是，那就要看看主板的手册了。</p>
+</li>
+<li><p>联网</p>
+<ul>
+<li><p>如果是局域网（wifi），需要保证网卡没有被关闭</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rfkill</span><br><span class="line">---------------------------------------</span><br><span class="line">ID TYPE      DEVICE      SOFT      HARD</span><br><span class="line"> 0 bluetooth hci0   unblocked unblocked</span><br><span class="line"> 1 wlan      phy0   unblocked unblocked</span><br></pre></td></tr></table></figure>
+<p>如果HARD下是blocked（硬件级关闭），手动开启；</p>
+<p>如果SOFT下是blocked（可以通过命令开启），使用<code>rfkill unblock wlan</code></p>
+</li>
+<li><p>使用<code>iwctl</code>命令联网</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">iwctl</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">device list <span class="comment"># 显示可联网的设备列表</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果设备关闭，使用下面的命令开启设备</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">device name set-property Powered on</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">adapter adapter set-property Powered on</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">扫描网络</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">station name scan</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示扫描到的网络</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">station name get-networks</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">连接到指定网络</span></span><br><span class="line"><span class="meta prompt_">[iwd]$ </span><span class="language-bash">station name connect SSID</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果是有密码的wifi，使用下面的命令连接目标wifi</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">iwctl --passphrase 密码 station 设备 connect SSID</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>设置系统时间<code>timedatectl</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk # 或者 fdisk -l</span><br></pre></td></tr></table></figure>
+<p>需要以下的分区：</p>
+<blockquote>
+<ol>
+<li>root分区 /</li>
+<li>EFI分区（如果是多系统，使用已有的efi分区就行）</li>
+<li>home分区</li>
+<li>交换分区（交换文件，需要文件系统支持）</li>
+</ol>
+</blockquote>
+<p>6.1 使用<code>cfdisk /dev/nvme0n1</code>对磁盘进行分区。</p>
+<p>GPT格式各分区建议大小：</p>
+<p>|   挂载点    |      分区       |       分区类型        |           分区大小            |<br>| :————-: | :——————-: | :—————————-: | :—————————————-: |<br>| <code>/mnt/boot</code> | <code>/dev/EFI分区</code>  | EFI system partition  |             1 GiB             |<br>|  <code>[SWAP]</code>   | <code>/dev/交换分区</code> |      Linux swap       |           至少4 GiB           |<br>|   <code>/mnt</code>    | <code>/dev/root分区</code> | Linux x86-64 root (/) | 剩余磁盘大小. 至少 23–32 GiB. |</p>
+<p>6.2 格式化分区</p>
+<p>root分区：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mkfs.ext4 /dev/root_partition</span></span><br></pre></td></tr></table></figure>
+<p>swap分区：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mkswap /dev/swap_partition</span></span><br></pre></td></tr></table></figure>
+<p>EFI分区：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition</span></span><br></pre></td></tr></table></figure>
+<p>6.3 挂载分区</p>
+<p>挂载root分区到/mnt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mount /dev/root_partition /mnt</span></span><br></pre></td></tr></table></figure>
+<p>创建剩余的挂载点（如/mnt/boot），挂载其他分区。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mount --<span class="built_in">mkdir</span> /dev/efi_system_partition /mnt/boot</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">swapon /dev/swap_partition</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装系统</p>
+<p>7.1 换源</p>
+<p>在<code>/etc/pacman.d/mirrorlist</code>文件中存放着各个区域对应的软件源。国内直接选出清华源、中科大源、南大源或其他高速源即可。</p>
+<p>7.2 安装基本软件包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap -K /mnt base linux linux-firmware intel-ucode sof-firmware NetworkManager vim </span><br></pre></td></tr></table></figure>
+<p>7.3 生成fstab文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<p>7.4 chroot（进入新系统）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
+<p>7.5 设置时区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/archlinux%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93/" data-id="cm1em9i5s00042jwpepjnh1gt" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MySQL45讲笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/MySQL45%E8%AE%B2%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.108Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql45讲学习笔记"><a href="#mysql45讲学习笔记" class="headerlink" title="mysql45讲学习笔记"></a>mysql45讲学习笔记</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="acid四大特性"><a href="#acid四大特性" class="headerlink" title="acid四大特性"></a>acid四大特性</h3><ul>
+<li>Atomic原子性</li>
+<li>Consistent一致性</li>
+<li>Isolated隔离性</li>
+<li>Durability持久性</li>
+</ul>
+<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><ul>
+<li>读未提交</li>
+<li>读已提交</li>
+<li>可重复读</li>
+<li>串行化</li>
+</ul>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><ul>
+<li>读写锁</li>
+<li>乐观/悲观锁</li>
+<li>意向锁</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h2 id="MySQL分库分表"><a href="#MySQL分库分表" class="headerlink" title="MySQL分库分表"></a>MySQL分库分表</h2><h2 id="调优"><a href="#调优" class="headerlink" title="调优"></a>调优</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/MySQL45%E8%AE%B2%E7%AC%94%E8%AE%B0/" data-id="cm1em9i5q00022jwpery3cwya" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/algo/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.108Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构与算法-考研难点总结"><a href="#数据结构与算法-考研难点总结" class="headerlink" title="数据结构与算法 考研难点总结"></a>数据结构与算法 考研难点总结</h1><h2 id="算法的稳定性"><a href="#算法的稳定性" class="headerlink" title="算法的稳定性"></a>算法的稳定性</h2><p>相等的元素，排序前后相对位置如果变动，该算法就不稳定；</p>
+<blockquote>
+<p>如5 1 2 5 0，使用选择排序后是 0 1 2 5 5最后一个5原本在前一个5的前面，排序完后到了后面，相对位置发生了变化，<strong>选择排序</strong>就不稳定</p>
+<h2 id="字符串模式匹配"><a href="#字符串模式匹配" class="headerlink" title="字符串模式匹配"></a>字符串模式匹配</h2><h3 id="bf算法（引子）"><a href="#bf算法（引子）" class="headerlink" title="bf算法（引子）"></a>bf算法（引子）</h3><p>时间复杂度：O(mn)<br>逻辑：模式串（匹配的内容）与主串逐个匹配，一个对不上，指向主串的指针前进一次，最坏情况下匹配m*n次</p>
+<h3 id="kmp算法（难点）"><a href="#kmp算法（难点）" class="headerlink" title="kmp算法（难点）"></a>kmp算法（难点）</h3><p>时间复杂度：O(m+n)<br>逻辑：</p>
+</blockquote>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h3><p>时间复杂度：O(n^2)<br>逻辑：遍历整个数组，逆序则交换，达成局部有序，完成一轮再重新遍历，将局部有序变成整体有序<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[i]) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> tmp = arr[i];</span><br><span class="line">                arr[i] = arr[j];</span><br><span class="line">                arr[j] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2. 选择排序"></a>2. 选择排序</h3><p>时间复杂度：O(n^2)，如果刚好数组从大到小，遍历n次，每次对比n次<br>逻辑：每次从原数组中找出最小的放到未排序部分的最左边（自然顺序，也叫从小到大）<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">selection_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> min = arr[i];</span><br><span class="line">        <span class="type">int</span> index;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 找出最小值</span></span><br><span class="line">            <span class="keyword">if</span> (min &gt; arr[j]) </span><br><span class="line">            &#123;</span><br><span class="line">                min = arr[j];   <span class="comment">// 更新最小值</span></span><br><span class="line">                index = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 更新已排序部分</span></span><br><span class="line">        <span class="keyword">if</span> (index != i) </span><br><span class="line">        &#123;</span><br><span class="line">            arr[index] = arr[i];</span><br><span class="line">            arr[i] = min;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-插入排序"><a href="#3-插入排序" class="headerlink" title="3. 插入排序"></a>3. 插入排序</h3><p>时间复杂度：O(n^2)<br>实现逻辑：从未排序部分拿出第一个元素，与已排序部分的每一个元素比较，直到找到大于它的，将他插入到其后。<br>不会修改相等元素的相对位置，属于稳定算法。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insert_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> val = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="4-快速排序"><a href="#4-快速排序" class="headerlink" title="4. 快速排序"></a>4. 快速排序</h3><p>时间复杂度：<br>实现思想：选中哨兵元素，遍历数组，右边大于哨兵，向左遍历，左边小于哨兵，向右遍历，否则交换两边的元素，最终哨兵左右与哨兵元素保持 <strong>左 &lt; 哨兵 &lt; 右</strong> 的关系</p>
+<h3 id="5-归并排序"><a href="#5-归并排序" class="headerlink" title="5. 归并排序"></a>5. 归并排序</h3><h3 id="6-桶排序"><a href="#6-桶排序" class="headerlink" title="6. 桶排序"></a>6. 桶排序</h3><h3 id="7-堆排序"><a href="#7-堆排序" class="headerlink" title="7. 堆排序"></a>7. 堆排序</h3><h3 id="8-希尔排序"><a href="#8-希尔排序" class="headerlink" title="8. 希尔排序"></a>8. 希尔排序</h3><h3 id="9-计数排序"><a href="#9-计数排序" class="headerlink" title="9. 计数排序"></a>9. 计数排序</h3><h3 id="10-基数排序"><a href="#10-基数排序" class="headerlink" title="10. 基数排序"></a>10. 基数排序</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/algo/" data-id="cm1em9i5r00032jwpcah4dhrl" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-gdb_debug" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/gdb_debug/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.108Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="gdb指令"><a href="#gdb指令" class="headerlink" title="gdb指令"></a>gdb指令</h1><p>read memory: x /nfu addr</p>
+<p>n: how many elements to read.<br>f: how to display target data.<br>support format:</p>
+<ul>
+<li>x: data will be display in the form of hex code.</li>
+<li>d: 0, 1, 2, …, nums like decimal.</li>
+<li>u: unsigned int.</li>
+<li>o: \0123, \0254, etc</li>
+<li>t: binary</li>
+<li>a: the same as ‘x’</li>
+<li>i: addr</li>
+<li>c: char</li>
+<li>f: float<br>u: how many elements the addr counts.</li>
+<li>b: 8 bit, 1 byte</li>
+<li>h: 16 bits, 1 word</li>
+<li>w: 32 bits, 2 words</li>
+<li>g: 64 bits, 4 words</li>
+</ul>
+<p>for example:<br>x /20cb 0x11223344: read memory address 0x11223344, data will be displayed in the stdout like a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,<br>x /20ch 0x11223344: a,c,e,g,i,k,m,o,q,s</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/gdb_debug/" data-id="cm1em9i5t00062jwp5ngf2j9n" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ostep笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/ostep%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.108Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/06/24/ostep%E7%AC%94%E8%AE%B0/">ostep笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Chapter-1-进程"><a href="#Chapter-1-进程" class="headerlink" title="Chapter 1 进程"></a>Chapter 1 进程</h2><ol>
+<li><p>进程的定义：运行着的程序<br>操作系统将存放在磁盘的程序加载到内存，将处理机资源分配给这些字节数据，程序就运行起来了。</p>
+</li>
+<li><p>CPU分时<br>操作系统会营造一种有着用不完的cpu的假象，使用的方法就是<strong>CPU分时</strong>技术。<br>什么是CPU分时技术？</p>
+</li>
+</ol>
+<p>实现CPU分时技术的前提？</p>
+<ul>
+<li>需要cpu支持内核态和用户态机制。<blockquote>
+<p>如【上下文切换技术】，该技术支持操作系统停下一个程序，去跑起另一个程序。需要保存要停止的程序的上下文内容，然后切换到另一个程序。</p>
+</blockquote>
+</li>
+<li>需要操作系统支持一些调度算法。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/ostep%E7%AC%94%E8%AE%B0/" data-id="cm1em9i6b000h2jwp05xp00v4" data-title="ostep笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-程序段资料" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/24/%E7%A8%8B%E5%BA%8F%E6%AE%B5%E8%B5%84%E6%96%99/" class="article-date">
+  <time class="dt-published" datetime="2024-06-24T03:11:09.108Z" itemprop="datePublished">2024-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>主要的程序段：</p>
+<ul>
+<li>.init：保存 bootloader 的代码和数据。这个特殊的段在CMakefiles.txt中定义。所有其余的程序段都是真正的 ChCore 内核。</li>
+<li>.text：内核程序代码，由一条条的机器指令组成。</li>
+<li>.data：保存初始化的全局变量或静态变量数据。定义在函数内部的局部非静态变量不在该段中存储。</li>
+<li>.rodata：保存只读数据，包括一些不可修改的常量数据，例如全局常量、char *str = “apple”中的字符串常量等。然而，如果使用char str2[] = “apple”，那么此时该字符串是动态地存在栈上的。</li>
+<li>.bss：记录未初始化的全局或静态变量，例如int a。由于在运行期间未初始化的全局变量被初始化为 0，因此链接器只记录地址和大小，而不是占用实际空间。<br>除上面列出的部分外，其他大多数段都包含调试信息，通常包含在可执行文件中，而不是加载到内存中。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="type">static</span> <span class="type">int</span> y = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> z = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a;</span><br><span class="line">  <span class="type">int</span> b = <span class="number">0</span>;</span><br><span class="line">  print();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">test:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .init:</span><br><span class="line"></span><br><span class="line">0000000000001000 &lt;_init&gt;:</span><br><span class="line">    1000:       f3 0f 1e fa             endbr64</span><br><span class="line">    1004:       48 83 ec 08             sub    $0x8,%rsp</span><br><span class="line">    1008:       48 8b 05 d9 2f 00 00    mov    0x2fd9(%rip),%rax        # 3fe8 &lt;__gmon_start__@Base&gt;</span><br><span class="line">    100f:       48 85 c0                test   %rax,%rax</span><br><span class="line">    1012:       74 02                   je     1016 &lt;_init+0x16&gt;</span><br><span class="line">    1014:       ff d0                   call   *%rax</span><br><span class="line">    1016:       48 83 c4 08             add    $0x8,%rsp</span><br><span class="line">    101a:       c3                      ret</span><br><span class="line"></span><br><span class="line">Disassembly of section .plt:</span><br><span class="line"></span><br><span class="line">0000000000001020 &lt;.plt&gt;:</span><br><span class="line">    1020:       ff 35 a2 2f 00 00       push   0x2fa2(%rip)        # 3fc8 &lt;_GLOBAL_OFFSET_TABLE_+0x8&gt;</span><br><span class="line">    1026:       f2 ff 25 a3 2f 00 00    bnd jmp *0x2fa3(%rip)        # 3fd0 &lt;_GLOBAL_OFFSET_TABLE_+0x10&gt;</span><br><span class="line">    102d:       0f 1f 00                nopl   (%rax)</span><br><span class="line"></span><br><span class="line">Disassembly of section .plt.got:</span><br><span class="line"></span><br><span class="line">0000000000001030 &lt;__cxa_finalize@plt&gt;:</span><br><span class="line">    1030:       f3 0f 1e fa             endbr64</span><br><span class="line">    1034:       f2 ff 25 bd 2f 00 00    bnd jmp *0x2fbd(%rip)        # 3ff8 &lt;__cxa_finalize@GLIBC_2.2.5&gt;</span><br><span class="line">    103b:       0f 1f 44 00 00          nopl   0x0(%rax,%rax,1)</span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line">0000000000001040 &lt;_start&gt;:</span><br><span class="line">    1040:       f3 0f 1e fa             endbr64</span><br><span class="line">    1044:       31 ed                   xor    %ebp,%ebp</span><br><span class="line">    1046:       49 89 d1                mov    %rdx,%r9</span><br><span class="line">    1049:       5e                      pop    %rsi</span><br><span class="line">    104a:       48 89 e2                mov    %rsp,%rdx</span><br><span class="line">    104d:       48 83 e4 f0             and    $0xfffffffffffffff0,%rsp</span><br><span class="line">    1051:       50                      push   %rax</span><br><span class="line">    1052:       54                      push   %rsp</span><br><span class="line">    1053:       45 31 c0                xor    %r8d,%r8d</span><br><span class="line">    1056:       31 c9                   xor    %ecx,%ecx</span><br><span class="line">    1058:       48 8d 3d ca 00 00 00    lea    0xca(%rip),%rdi        # 1129 &lt;main&gt;</span><br><span class="line">    105f:       ff 15 73 2f 00 00       call   *0x2f73(%rip)        # 3fd8 &lt;__libc_start_main@GLIBC_2.34&gt;</span><br><span class="line">    1065:       f4                      hlt</span><br><span class="line">    1066:       66 2e 0f 1f 84 00 00    cs nopw 0x0(%rax,%rax,1)</span><br><span class="line">    106d:       00 00 00</span><br><span class="line"></span><br><span class="line">0000000000001070 &lt;deregister_tm_clones&gt;:</span><br><span class="line">    1070:       48 8d 3d 99 2f 00 00    lea    0x2f99(%rip),%rdi        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    1077:       48 8d 05 92 2f 00 00    lea    0x2f92(%rip),%rax        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    107e:       48 39 f8                cmp    %rdi,%rax</span><br><span class="line">    1081:       74 15                   je     1098 &lt;deregister_tm_clones+0x28&gt;</span><br><span class="line">    1083:       48 8b 05 56 2f 00 00    mov    0x2f56(%rip),%rax        # 3fe0 &lt;_ITM_deregisterTMCloneTable@Base&gt;</span><br><span class="line">    108a:       48 85 c0                test   %rax,%rax</span><br><span class="line">    108d:       74 09                   je     1098 &lt;deregister_tm_clones+0x28&gt;</span><br><span class="line">    108f:       ff e0                   jmp    *%rax</span><br><span class="line">    1091:       0f 1f 80 00 00 00 00    nopl   0x0(%rax)</span><br><span class="line">    1098:       c3                      ret</span><br><span class="line">    1099:       0f 1f 80 00 00 00 00    nopl   0x0(%rax)</span><br><span class="line"></span><br><span class="line">00000000000010a0 &lt;register_tm_clones&gt;:</span><br><span class="line">    10a0:       48 8d 3d 69 2f 00 00    lea    0x2f69(%rip),%rdi        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    10a7:       48 8d 35 62 2f 00 00    lea    0x2f62(%rip),%rsi        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    10ae:       48 29 fe                sub    %rdi,%rsi</span><br><span class="line">    10b1:       48 89 f0                mov    %rsi,%rax</span><br><span class="line">    10b4:       48 c1 ee 3f             shr    $0x3f,%rsi</span><br><span class="line">    10b8:       48 c1 f8 03             sar    $0x3,%rax</span><br><span class="line">    10bc:       48 01 c6                add    %rax,%rsi</span><br><span class="line">    10bf:       48 d1 fe                sar    %rsi</span><br><span class="line">    10c2:       74 14                   je     10d8 &lt;register_tm_clones+0x38&gt;</span><br><span class="line">    10c4:       48 8b 05 25 2f 00 00    mov    0x2f25(%rip),%rax        # 3ff0 &lt;_ITM_registerTMCloneTable@Base&gt;</span><br><span class="line">    10cb:       48 85 c0                test   %rax,%rax</span><br><span class="line">    10ce:       74 08                   je     10d8 &lt;register_tm_clones+0x38&gt;</span><br><span class="line">    10d0:       ff e0                   jmp    *%rax</span><br><span class="line">    10d2:       66 0f 1f 44 00 00       nopw   0x0(%rax,%rax,1)</span><br><span class="line">    10d8:       c3                      ret</span><br><span class="line">    10d9:       0f 1f 80 00 00 00 00    nopl   0x0(%rax)</span><br><span class="line"></span><br><span class="line">00000000000010e0 &lt;__do_global_dtors_aux&gt;:</span><br><span class="line">    10e0:       f3 0f 1e fa             endbr64</span><br><span class="line">    10e4:       80 3d 25 2f 00 00 00    cmpb   $0x0,0x2f25(%rip)        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    10eb:       75 2b                   jne    1118 &lt;__do_global_dtors_aux+0x38&gt;</span><br><span class="line">    10ed:       55                      push   %rbp</span><br><span class="line">    10ee:       48 83 3d 02 2f 00 00    cmpq   $0x0,0x2f02(%rip)        # 3ff8 &lt;__cxa_finalize@GLIBC_2.2.5&gt;</span><br><span class="line">    10f5:       00</span><br><span class="line">    10f6:       48 89 e5                mov    %rsp,%rbp</span><br><span class="line">    10f9:       74 0c                   je     1107 &lt;__do_global_dtors_aux+0x27&gt;</span><br><span class="line">    10fb:       48 8b 3d 06 2f 00 00    mov    0x2f06(%rip),%rdi        # 4008 &lt;__dso_handle&gt;</span><br><span class="line">    1102:       e8 29 ff ff ff          call   1030 &lt;__cxa_finalize@plt&gt;</span><br><span class="line">    1107:       e8 64 ff ff ff          call   1070 &lt;deregister_tm_clones&gt;</span><br><span class="line">    110c:       c6 05 fd 2e 00 00 01    movb   $0x1,0x2efd(%rip)        # 4010 &lt;__TMC_END__&gt;</span><br><span class="line">    1113:       5d                      pop    %rbp</span><br><span class="line">    1114:       c3                      ret</span><br><span class="line">    1115:       0f 1f 00                nopl   (%rax)</span><br><span class="line">    1118:       c3                      ret</span><br><span class="line">    1119:       0f 1f 80 00 00 00 00    nopl   0x0(%rax)</span><br><span class="line"></span><br><span class="line">0000000000001120 &lt;frame_dummy&gt;:</span><br><span class="line">    1120:       f3 0f 1e fa             endbr64</span><br><span class="line">    1124:       e9 77 ff ff ff          jmp    10a0 &lt;register_tm_clones&gt;</span><br><span class="line"></span><br><span class="line">0000000000001129 &lt;main&gt;:</span><br><span class="line">    1129:       f3 0f 1e fa             endbr64</span><br><span class="line">    112d:       55                      push   %rbp</span><br><span class="line">    112e:       48 89 e5                mov    %rsp,%rbp</span><br><span class="line">    1131:       48 83 ec 10             sub    $0x10,%rsp</span><br><span class="line">    1135:       c7 45 fc 00 00 00 00    movl   $0x0,-0x4(%rbp)</span><br><span class="line">    113c:       b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">    1141:       e8 07 00 00 00          call   114d &lt;print&gt;</span><br><span class="line">    1146:       b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">    114b:       c9                      leave</span><br><span class="line">    114c:       c3                      ret</span><br><span class="line"></span><br><span class="line">000000000000114d &lt;print&gt;:</span><br><span class="line">    114d:       f3 0f 1e fa             endbr64</span><br><span class="line">    1151:       55                      push   %rbp</span><br><span class="line">    1152:       48 89 e5                mov    %rsp,%rbp</span><br><span class="line">    1155:       90                      nop</span><br><span class="line">    1156:       5d                      pop    %rbp</span><br><span class="line">    1157:       c3                      ret</span><br><span class="line"></span><br><span class="line">Disassembly of section .fini:</span><br><span class="line"></span><br><span class="line">0000000000001158 &lt;_fini&gt;:</span><br><span class="line">    1158:       f3 0f 1e fa             endbr64</span><br><span class="line">    115c:       48 83 ec 08             sub    $0x8,%rsp</span><br><span class="line">    1160:       48 83 c4 08             add    $0x8,%rsp</span><br><span class="line">    1164:       c3                      ret</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/06/24/%E7%A8%8B%E5%BA%8F%E6%AE%B5%E8%B5%84%E6%96%99/" data-id="cm1em9i6o001b2jwpaen4cy8r" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-操作系统概念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time class="dt-published" datetime="2024-04-25T16:00:00.000Z" itemprop="datePublished">2024-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/">操作系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><h3 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h3><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存置换策略"><a href="#内存置换策略" class="headerlink" title="内存置换策略"></a>内存置换策略</h3><h3 id="belady现象"><a href="#belady现象" class="headerlink" title="belady现象"></a>belady现象</h3><h2 id="CPU管理"><a href="#CPU管理" class="headerlink" title="CPU管理"></a>CPU管理</h2><h2 id="io管理"><a href="#io管理" class="headerlink" title="io管理"></a>io管理</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/" data-id="cm1em9i6h000q2jwp0lp14t0y" data-title="操作系统" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-rust学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-04-16T16:00:00.000Z" itemprop="datePublished">2024-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rust/">Rust</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">rust学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="与其他后端语言的共性"><a href="#与其他后端语言的共性" class="headerlink" title="与其他后端语言的共性"></a>与其他后端语言的共性</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="基本数据类型（栈数据）"><a href="#基本数据类型（栈数据）" class="headerlink" title="基本数据类型（栈数据）"></a>基本数据类型（栈数据）</h4><ol>
+<li><p>bool<br> true和false，大小为1个字节。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">is_true</span>: <span class="type">bool</span> = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">is_false</span>: <span class="type">bool</span> = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;is_true: &#123;&#125;&quot;</span>, is_true);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;is_false: &#123;&#125;&quot;</span>, is_false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int</p>
+<ul>
+<li>i8：有符号8位整数类型</li>
+<li>u8：无符号8位整数类型</li>
+<li>i16：有符号16位整数类型</li>
+<li>u16：无符号16位整数类型</li>
+<li>i32：有符号32位整数类型</li>
+<li>u32：无符号32位整数类型</li>
+<li>i64：有符号64位整数类型</li>
+<li>u64：无符号64位整数类型</li>
+<li>i128：有符号128位整数类型</li>
+<li>u128：无符号128位整数类型</li>
+<li>isize：有符号指针大小整数类型</li>
+<li>usize：无符号指针大小整数类型</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">a</span>: <span class="type">i8</span> = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">b</span>: <span class="type">u16</span> = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">c</span>: <span class="type">i32</span> = -<span class="number">500</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">d</span>: <span class="type">u64</span> = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;a: &#123;&#125;&quot;</span>, a);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;b: &#123;&#125;&quot;</span>, b);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;c: &#123;&#125;&quot;</span>, c);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;d: &#123;&#125;&quot;</span>, d);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>float<br> f32和f64，遵从ieee754规则，f32是32位浮点数，f64是64位浮点数。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span>: <span class="type">f32</span> = <span class="number">3.14</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">y</span>: <span class="type">f64</span> = <span class="number">2.71828</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;x: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;y: &#123;&#125;&quot;</span>, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>char<br> Unicode标量值的32位表示。字符类型的大小为4个字节</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">c</span>: <span class="type">char</span> = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">heart_emoji</span>: <span class="type">char</span> = <span class="string">&#x27;❤&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;c: &#123;&#125;&quot;</span>, c);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;heart_emoji: &#123;&#125;&quot;</span>, heart_emoji);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h4><ol>
+<li><p>元组（Tuple）<br> 将多个不同类型的值组合在一起。元组使用圆括号()表示，其中的值可以通过索引访问。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">person</span>: (<span class="type">String</span>, <span class="type">i32</span>, <span class="type">bool</span>) = (<span class="string">&quot;Alice&quot;</span>.<span class="title function_ invoke__">to_string</span>(), <span class="number">25</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Name: &#123;&#125;&quot;</span>, person.<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Age: &#123;&#125;&quot;</span>, person.<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Is employed: &#123;&#125;&quot;</span>, person.<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组（Array）</p>
+<p> 数组是一种固定长度的数据结构，存储相同类型的多个值。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">numbers</span>: [<span class="type">i32</span>; <span class="number">5</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">number</span> <span class="keyword">in</span> numbers.<span class="title function_ invoke__">iter</span>() &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Number: &#123;&#125;&quot;</span>, number);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>String，由一系列Unicode字符组成。可增长的。</p>
+<p>以下是一个字符串的示例：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">message</span>: <span class="type">String</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;Hello, Rust!&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Message: &#123;&#125;&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h4><ol>
+<li><p>结构体（Struct）<br> 将多个不同类型的值组合在一起形成一个新的类型。结构体使用struct关键字定义，并可以包含字段（field）和方法（method）。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    width: <span class="type">u32</span>,</span><br><span class="line">    height: <span class="type">u32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">area</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.width * <span class="keyword">self</span>.height</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">rect</span> = Rectangle &#123;</span><br><span class="line">        width: <span class="number">10</span>,</span><br><span class="line">        height: <span class="number">20</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Area: &#123;&#125;&quot;</span>, rect.<span class="title function_ invoke__">area</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>枚举（Enum）</p>
+<p> 枚举是一种自定义的数据类型，它可以表示多个可能的值。枚举使用enum关键字定义，并可以包含不同的变体（variant）。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Fruit</span> &#123;</span><br><span class="line">    Apple,</span><br><span class="line">    Banana,</span><br><span class="line">    Orange,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">fruit</span>: Fruit = Fruit::Apple;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> fruit &#123;</span><br><span class="line">        Fruit::Apple =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s an apple!&quot;</span>),</span><br><span class="line">        Fruit::Banana =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s a banana!&quot;</span>),</span><br><span class="line">        Fruit::Orange =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s an orange!&quot;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="其他数据类型"><a href="#其他数据类型" class="headerlink" title="其他数据类型"></a>其他数据类型</h3><ol>
+<li><p>切片（Slice）<br> 切片是对数组或字符串的引用，它允许我们引用集合中的一部分而不用拷贝整个集合。切片使用&amp;符号和范围表示。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">numbers</span>: [<span class="type">i32</span>; <span class="number">5</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">slice</span>: &amp;[<span class="type">i32</span>] = &amp;numbers[<span class="number">1</span>..<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Slice: &#123;:?&#125;&quot;</span>, slice);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Option类型<br> Option类型在Rust中用于表示可能为空的值。它有两个可能的取值：Some(value)表示有值，None表示无值。Option类型可以帮助我们处理可能出现空值的情况。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">divide</span>(x: <span class="type">f64</span>, y: <span class="type">f64</span>) <span class="punctuation">-&gt;</span> <span class="type">Option</span>&lt;<span class="type">f64</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> y != <span class="number">0.0</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Some</span>(x / y)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="literal">None</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = <span class="title function_ invoke__">divide</span>(<span class="number">10.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> result &#123;</span><br><span class="line">        <span class="title function_ invoke__">Some</span>(value) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Result: &#123;&#125;&quot;</span>, value),</span><br><span class="line">        <span class="literal">None</span> =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Cannot divide by zero&quot;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Result类型<br> Result类型在Rust中用于处理可能发生错误的操作。它有两个可能的取值：Ok(value)表示操作成功，返回一个值，Err(error)表示操作失败，返回一个错误。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">divide</span>(x: <span class="type">f64</span>, y: <span class="type">f64</span>) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;<span class="type">f64</span>, <span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> y != <span class="number">0.0</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(x / y)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(<span class="string">&quot;Cannot divide by zero&quot;</span>.<span class="title function_ invoke__">to_string</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = <span class="title function_ invoke__">divide</span>(<span class="number">10.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> result &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(value) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Result: &#123;&#125;&quot;</span>, value),</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(error) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Error: &#123;&#125;&quot;</span>, error),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="函数签名和函数返回值"><a href="#函数签名和函数返回值" class="headerlink" title="函数签名和函数返回值"></a>函数签名和函数返回值</h4><p>如上面的笔记，函数关键字fn，返回值后面不带任务符号</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">hello</span>(a: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="comment">// a 是参数，要求是一个32位无符号整数</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">    <span class="number">0</span> <span class="comment">// 0是一个32位无符号整数，后面不加;，表示返回a</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><h4 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h4><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><h4 id="break返回值"><a href="#break返回值" class="headerlink" title="break返回值"></a>break返回值</h4><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><h2 id="rust特性"><a href="#rust特性" class="headerlink" title="rust特性"></a>rust特性</h2><h3 id="默认不可变性"><a href="#默认不可变性" class="headerlink" title="默认不可变性"></a>默认不可变性</h3><p>rust所有的变量都默认不可变，在声明时添加mut可改变其不可变性</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">a</span> = <span class="number">12</span>;</span><br><span class="line">a = <span class="number">13</span>; <span class="comment">// ok</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">b</span> = <span class="number">11</span>;</span><br><span class="line">b = <span class="number">45</span>; <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>有个例外，rust支持const关键字，这就是一个常量，建议声明的常量名字全大写，由const声明的常量不支持mut</p>
+<h3 id="所有权"><a href="#所有权" class="headerlink" title="所有权"></a>所有权</h3><p>rust要求每一个值都有且只能有一个变量，从根源上避免了<a href="#####数据竞争">数据竞争</a>。</p>
+<p>rust的所有权机制导致一旦一个变量被传递到了另一个作用范围，主要是从函数外部传递到内部，会导致外部的这个变量无效，在退出函数后，这个变量也不会重新有效（在函数内部被丢弃）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">len</span> = <span class="title function_ invoke__">calculate_length</span>(s1);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The length of &#x27;&#123;&#125;&#x27; is &#123;&#125;.&quot;</span>, s1, len); <span class="comment">// 这里，s1已经无效了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">calculate_length</span>(s: <span class="type">String</span>) <span class="punctuation">-&gt;</span> <span class="type">usize</span> &#123;</span><br><span class="line">    s.<span class="title function_ invoke__">len</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust支持传引用&amp;到函数，引用&amp;不会导致变量的所有权被转移，只是将值传递进函数。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">change</span>(s: &amp;<span class="keyword">mut</span> <span class="type">String</span>) &#123; <span class="comment">// 传进来一个可变的引用，支持修改外部的变量</span></span><br><span class="line">    s.<span class="title function_ invoke__">push_str</span>(<span class="string">&quot;, world&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">change</span>(s: &amp; <span class="type">String</span>) &#123; <span class="comment">// 不可变引用，不支持修改外部变量，只能使用这个值</span></span><br><span class="line">    s.<span class="title function_ invoke__">push_str</span>(<span class="string">&quot;, world&quot;</span>);  <span class="comment">// 不能通过编译</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust支持在函数内部声明一个变量，将其返回，外部就能够获得这个变量的所有权</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">dangle</span>() <span class="punctuation">-&gt;</span> &amp;<span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust不支持返回在函数内部声明的变量的引用，因为引用只是值，变量本身会随着函数的退出而被丢弃，返回的引用就变成了无效的指针（dangling pointer）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">dangle</span>() <span class="punctuation">-&gt;</span> &amp;<span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &amp;s  <span class="comment">// 导致dangling pointer，无法通过编译</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，rust使用了严格的机制避免<a href="#####数据竞争">数据竞争</a></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r1</span> = &amp;s; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r2</span> = &amp;s; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r3</span> = &amp;<span class="keyword">mut</span> s; <span class="comment">// 大问题，可变引用会导致r1、r2的值不可靠</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;, &#123;&#125;, and &#123;&#125;&quot;</span>, r1, r2, r3);</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h4><h5 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h5><ol>
+<li>两个或更多指针同时访问同一数据。</li>
+<li>至少有一个指针被用来写入数据。</li>
+<li>没有同步数据访问的机制。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm1em9i6d000k2jwpf4ongkcs" data-title="rust学习笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ieee754转换示例" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/11/ieee754%E8%BD%AC%E6%8D%A2%E7%A4%BA%E4%BE%8B/" class="article-date">
+  <time class="dt-published" datetime="2024-03-10T16:00:00.000Z" itemprop="datePublished">2024-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/11/ieee754%E8%BD%AC%E6%8D%A2%E7%A4%BA%E4%BE%8B/">IEEE754数据转换示例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="IEEE754浮点数表示法"><a href="#IEEE754浮点数表示法" class="headerlink" title="IEEE754浮点数表示法"></a>IEEE754浮点数表示法</h2><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+-------------------+</span><br><span class="line">| sign | exp | tail |</span><br><span class="line">+-------------------+</span><br><span class="line"></span><br><span class="line">sign: 符号位 0正数 1负数，单精度和双精度下均只有 1 bit</span><br><span class="line">exp: 指数，单精度下指数有 8 bits，双精度下有 11 bits</span><br><span class="line">tail: 尾数，单精度下有 23 bits，双精度下有 52 bits</span><br></pre></td></tr></table></figure>
+<h2 id="浮点数转二进制"><a href="#浮点数转二进制" class="headerlink" title="浮点数转二进制"></a>浮点数转二进制</h2><p>示例数据：5.75</p>
+<p>step 1: 转换成二进制 101.11;</p>
+<p>step 2: 将整数部分左右移，知道小数点前只有 1 个 1。 1.0111 右移 <strong>2</strong> 位，得到位数 0111;</p>
+<p>step 3: 将这个移动的位数加上偏置值，单精度下，该偏置=127，双精度下，该偏置量=1023。指数exp = 2 + 127 = 129，得出指数二进制表示：1000 0001;</p>
+<p>step 4: 将符号位、指数、位数整合起来，尾数不足 23bits 后面添0 得到该浮点数的二进制表示：<br>    <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+------+-----------+------------------------------+</span><br><span class="line">| sign |    exp    |             tail             |</span><br><span class="line">+------+-----------+------------------------------+</span><br><span class="line">|   0  |  10000001 | 011 1000 0000 0000 0000 0000 |</span><br><span class="line">+------+-----------+------------------------------+</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/03/11/ieee754%E8%BD%AC%E6%8D%A2%E7%A4%BA%E4%BE%8B/" data-id="cm1em9i5w00092jwp8wakba5v" data-title="IEEE754数据转换示例" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计网设备协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/11/%E8%AE%A1%E7%BD%91%E8%AE%BE%E5%A4%87%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2024-03-10T16:00:00.000Z" itemprop="datePublished">2024-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/11/%E8%AE%A1%E7%BD%91%E8%AE%BE%E5%A4%87%E5%8D%8F%E8%AE%AE/">计网osi/ios七层模型设备和协议</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="计网osi-ios七层模型设备和协议"><a href="#计网osi-ios七层模型设备和协议" class="headerlink" title="计网osi/ios七层模型设备和协议"></a>计网osi/ios七层模型设备和协议</h1><ol>
+<li>集线器（Hub）</li>
+</ol>
+<ul>
+<li>将所有的主机通过集线器连接在一起，主机发出的数据会通过集线器发送到所有主机，接收到数据的主机根据实际情况选择接受或拒绝数据。</li>
+<li>特点：将数据广播到连接在集线器的所有主机，不分割广播域/网络</li>
+<li>工作层次：物理层</li>
+</ul>
+<ol>
+<li>交换机（Switch）</li>
+</ol>
+<ul>
+<li>交换机维护一张mac地址表，字节流数据发送到交换机后，交换机会解析出源mac地址和目标mac地址，如果源mac地址不存在于维护的mac地址表，交换机会将源mac地址和对应的端口绑定起来，下次如果有数据要发送到记录在表的主机，会根据mac地址表解析出对应的端口，然后将字节流直接发到目标主机。</li>
+<li>特点：将数据发送到指定端口，会分割广播域，不分割网络</li>
+<li>工作层次：数据链路层</li>
+</ul>
+<p>功能上的差异：交换机工作在数据链路层，能够识别数据包中的MAC地址信息。它根据MAC地址将数据准确地传输给目标端口，从而减少了不必要的数据传输，提高了网络的效率和安全性。<br>工作层次：OSI模型的第2层（数据链路层）。</p>
+<ol>
+<li>路由器（Router）</li>
+</ol>
+<p>功能上的差异：路由器工作在网络层，主要负责不同网络之间的数据传输和路由选择。它根据IP地址和路由协议，确定数据包的最佳路径，并能够处理不同网络协议的数据包，如IP、IPX等。<br>工作层次：OSI模型的第3层（网络层）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/03/11/%E8%AE%A1%E7%BD%91%E8%AE%BE%E5%A4%87%E5%8D%8F%E8%AE%AE/" data-id="cm1em9i6z00272jwped1w0blh" data-title="计网osi/ios七层模型设备和协议" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>

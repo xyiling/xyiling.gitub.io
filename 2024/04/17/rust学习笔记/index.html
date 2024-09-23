@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>rust学习笔记 | xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="与其他后端语言的共性数据类型基本数据类型（栈数据） bool true和false，大小为1个字节。  1234567fn main() &#123;    let is_true: bool &#x3D; true;    let is_false: bool &#x3D; false;    println!(&quot;is_true: &#123;&#125;&quot;, is_true);    prin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust学习笔记">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="与其他后端语言的共性数据类型基本数据类型（栈数据） bool true和false，大小为1个字节。  1234567fn main() &#123;    let is_true: bool &#x3D; true;    let is_false: bool &#x3D; false;    println!(&quot;is_true: &#123;&#125;&quot;, is_true);    prin">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-05T02:54:23.717Z">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-rust学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-04-16T16:00:00.000Z" itemprop="datePublished">2024-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rust/">Rust</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      rust学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="与其他后端语言的共性"><a href="#与其他后端语言的共性" class="headerlink" title="与其他后端语言的共性"></a>与其他后端语言的共性</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="基本数据类型（栈数据）"><a href="#基本数据类型（栈数据）" class="headerlink" title="基本数据类型（栈数据）"></a>基本数据类型（栈数据）</h4><ol>
+<li><p>bool<br> true和false，大小为1个字节。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">is_true</span>: <span class="type">bool</span> = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">is_false</span>: <span class="type">bool</span> = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;is_true: &#123;&#125;&quot;</span>, is_true);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;is_false: &#123;&#125;&quot;</span>, is_false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int</p>
+<ul>
+<li>i8：有符号8位整数类型</li>
+<li>u8：无符号8位整数类型</li>
+<li>i16：有符号16位整数类型</li>
+<li>u16：无符号16位整数类型</li>
+<li>i32：有符号32位整数类型</li>
+<li>u32：无符号32位整数类型</li>
+<li>i64：有符号64位整数类型</li>
+<li>u64：无符号64位整数类型</li>
+<li>i128：有符号128位整数类型</li>
+<li>u128：无符号128位整数类型</li>
+<li>isize：有符号指针大小整数类型</li>
+<li>usize：无符号指针大小整数类型</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">a</span>: <span class="type">i8</span> = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">b</span>: <span class="type">u16</span> = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">c</span>: <span class="type">i32</span> = -<span class="number">500</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">d</span>: <span class="type">u64</span> = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;a: &#123;&#125;&quot;</span>, a);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;b: &#123;&#125;&quot;</span>, b);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;c: &#123;&#125;&quot;</span>, c);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;d: &#123;&#125;&quot;</span>, d);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>float<br> f32和f64，遵从ieee754规则，f32是32位浮点数，f64是64位浮点数。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span>: <span class="type">f32</span> = <span class="number">3.14</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">y</span>: <span class="type">f64</span> = <span class="number">2.71828</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;x: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;y: &#123;&#125;&quot;</span>, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>char<br> Unicode标量值的32位表示。字符类型的大小为4个字节</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">c</span>: <span class="type">char</span> = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">heart_emoji</span>: <span class="type">char</span> = <span class="string">&#x27;❤&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;c: &#123;&#125;&quot;</span>, c);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;heart_emoji: &#123;&#125;&quot;</span>, heart_emoji);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h4><ol>
+<li><p>元组（Tuple）<br> 将多个不同类型的值组合在一起。元组使用圆括号()表示，其中的值可以通过索引访问。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">person</span>: (<span class="type">String</span>, <span class="type">i32</span>, <span class="type">bool</span>) = (<span class="string">&quot;Alice&quot;</span>.<span class="title function_ invoke__">to_string</span>(), <span class="number">25</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Name: &#123;&#125;&quot;</span>, person.<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Age: &#123;&#125;&quot;</span>, person.<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Is employed: &#123;&#125;&quot;</span>, person.<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组（Array）</p>
+<p> 数组是一种固定长度的数据结构，存储相同类型的多个值。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">numbers</span>: [<span class="type">i32</span>; <span class="number">5</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">number</span> <span class="keyword">in</span> numbers.<span class="title function_ invoke__">iter</span>() &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Number: &#123;&#125;&quot;</span>, number);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>String，由一系列Unicode字符组成。可增长的。</p>
+<p>以下是一个字符串的示例：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">message</span>: <span class="type">String</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;Hello, Rust!&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Message: &#123;&#125;&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h4><ol>
+<li><p>结构体（Struct）<br> 将多个不同类型的值组合在一起形成一个新的类型。结构体使用struct关键字定义，并可以包含字段（field）和方法（method）。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    width: <span class="type">u32</span>,</span><br><span class="line">    height: <span class="type">u32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">area</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.width * <span class="keyword">self</span>.height</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">rect</span> = Rectangle &#123;</span><br><span class="line">        width: <span class="number">10</span>,</span><br><span class="line">        height: <span class="number">20</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Area: &#123;&#125;&quot;</span>, rect.<span class="title function_ invoke__">area</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>枚举（Enum）</p>
+<p> 枚举是一种自定义的数据类型，它可以表示多个可能的值。枚举使用enum关键字定义，并可以包含不同的变体（variant）。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Fruit</span> &#123;</span><br><span class="line">    Apple,</span><br><span class="line">    Banana,</span><br><span class="line">    Orange,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">fruit</span>: Fruit = Fruit::Apple;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> fruit &#123;</span><br><span class="line">        Fruit::Apple =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s an apple!&quot;</span>),</span><br><span class="line">        Fruit::Banana =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s a banana!&quot;</span>),</span><br><span class="line">        Fruit::Orange =&gt; <span class="built_in">println!</span>(<span class="string">&quot;It&#x27;s an orange!&quot;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="其他数据类型"><a href="#其他数据类型" class="headerlink" title="其他数据类型"></a>其他数据类型</h3><ol>
+<li><p>切片（Slice）<br> 切片是对数组或字符串的引用，它允许我们引用集合中的一部分而不用拷贝整个集合。切片使用&amp;符号和范围表示。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">numbers</span>: [<span class="type">i32</span>; <span class="number">5</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">slice</span>: &amp;[<span class="type">i32</span>] = &amp;numbers[<span class="number">1</span>..<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Slice: &#123;:?&#125;&quot;</span>, slice);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Option类型<br> Option类型在Rust中用于表示可能为空的值。它有两个可能的取值：Some(value)表示有值，None表示无值。Option类型可以帮助我们处理可能出现空值的情况。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">divide</span>(x: <span class="type">f64</span>, y: <span class="type">f64</span>) <span class="punctuation">-&gt;</span> <span class="type">Option</span>&lt;<span class="type">f64</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> y != <span class="number">0.0</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Some</span>(x / y)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="literal">None</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = <span class="title function_ invoke__">divide</span>(<span class="number">10.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> result &#123;</span><br><span class="line">        <span class="title function_ invoke__">Some</span>(value) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Result: &#123;&#125;&quot;</span>, value),</span><br><span class="line">        <span class="literal">None</span> =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Cannot divide by zero&quot;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Result类型<br> Result类型在Rust中用于处理可能发生错误的操作。它有两个可能的取值：Ok(value)表示操作成功，返回一个值，Err(error)表示操作失败，返回一个错误。</p>
+ <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">divide</span>(x: <span class="type">f64</span>, y: <span class="type">f64</span>) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;<span class="type">f64</span>, <span class="type">String</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> y != <span class="number">0.0</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(x / y)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(<span class="string">&quot;Cannot divide by zero&quot;</span>.<span class="title function_ invoke__">to_string</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = <span class="title function_ invoke__">divide</span>(<span class="number">10.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> result &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(value) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Result: &#123;&#125;&quot;</span>, value),</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(error) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Error: &#123;&#125;&quot;</span>, error),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="函数签名和函数返回值"><a href="#函数签名和函数返回值" class="headerlink" title="函数签名和函数返回值"></a>函数签名和函数返回值</h4><p>如上面的笔记，函数关键字fn，返回值后面不带任务符号</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">hello</span>(a: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="comment">// a 是参数，要求是一个32位无符号整数</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">    <span class="number">0</span> <span class="comment">// 0是一个32位无符号整数，后面不加;，表示返回a</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><h4 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h4><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><h4 id="break返回值"><a href="#break返回值" class="headerlink" title="break返回值"></a>break返回值</h4><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><h2 id="rust特性"><a href="#rust特性" class="headerlink" title="rust特性"></a>rust特性</h2><h3 id="默认不可变性"><a href="#默认不可变性" class="headerlink" title="默认不可变性"></a>默认不可变性</h3><p>rust所有的变量都默认不可变，在声明时添加mut可改变其不可变性</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">a</span> = <span class="number">12</span>;</span><br><span class="line">a = <span class="number">13</span>; <span class="comment">// ok</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">b</span> = <span class="number">11</span>;</span><br><span class="line">b = <span class="number">45</span>; <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>有个例外，rust支持const关键字，这就是一个常量，建议声明的常量名字全大写，由const声明的常量不支持mut</p>
+<h3 id="所有权"><a href="#所有权" class="headerlink" title="所有权"></a>所有权</h3><p>rust要求每一个值都有且只能有一个变量，从根源上避免了<a href="#####数据竞争">数据竞争</a>。</p>
+<p>rust的所有权机制导致一旦一个变量被传递到了另一个作用范围，主要是从函数外部传递到内部，会导致外部的这个变量无效，在退出函数后，这个变量也不会重新有效（在函数内部被丢弃）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">len</span> = <span class="title function_ invoke__">calculate_length</span>(s1);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The length of &#x27;&#123;&#125;&#x27; is &#123;&#125;.&quot;</span>, s1, len); <span class="comment">// 这里，s1已经无效了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">calculate_length</span>(s: <span class="type">String</span>) <span class="punctuation">-&gt;</span> <span class="type">usize</span> &#123;</span><br><span class="line">    s.<span class="title function_ invoke__">len</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust支持传引用&amp;到函数，引用&amp;不会导致变量的所有权被转移，只是将值传递进函数。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">change</span>(s: &amp;<span class="keyword">mut</span> <span class="type">String</span>) &#123; <span class="comment">// 传进来一个可变的引用，支持修改外部的变量</span></span><br><span class="line">    s.<span class="title function_ invoke__">push_str</span>(<span class="string">&quot;, world&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">change</span>(s: &amp; <span class="type">String</span>) &#123; <span class="comment">// 不可变引用，不支持修改外部变量，只能使用这个值</span></span><br><span class="line">    s.<span class="title function_ invoke__">push_str</span>(<span class="string">&quot;, world&quot;</span>);  <span class="comment">// 不能通过编译</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust支持在函数内部声明一个变量，将其返回，外部就能够获得这个变量的所有权</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">dangle</span>() <span class="punctuation">-&gt;</span> &amp;<span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rust不支持返回在函数内部声明的变量的引用，因为引用只是值，变量本身会随着函数的退出而被丢弃，返回的引用就变成了无效的指针（dangling pointer）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">dangle</span>() <span class="punctuation">-&gt;</span> &amp;<span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &amp;s  <span class="comment">// 导致dangling pointer，无法通过编译</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，rust使用了严格的机制避免<a href="#####数据竞争">数据竞争</a></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r1</span> = &amp;s; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r2</span> = &amp;s; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">r3</span> = &amp;<span class="keyword">mut</span> s; <span class="comment">// 大问题，可变引用会导致r1、r2的值不可靠</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;, &#123;&#125;, and &#123;&#125;&quot;</span>, r1, r2, r3);</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h4><h5 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h5><ol>
+<li>两个或更多指针同时访问同一数据。</li>
+<li>至少有一个指针被用来写入数据。</li>
+<li>没有同步数据访问的机制。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/04/17/rust%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm1em9i6d000k2jwpf4ongkcs" data-title="rust学习笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          操作系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/03/11/ieee754%E8%BD%AC%E6%8D%A2%E7%A4%BA%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">IEEE754数据转换示例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>

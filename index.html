@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="cxx、Java、python、rust、r、汇编、计组、计网、os、数据结构、算法、web，都搞，论文也读，网课也看，笔记也会记在这，还会收集各种资源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xyl的个人博客">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="cxx、Java、python、rust、r、汇编、计组、计网、os、数据结构、算法、web，都搞，论文也读，网课也看，笔记也会记在这，还会收集各种资源。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="进步, 执念, 编程开发, 计算机科学, 计算机图形学, ai, 深度学习, 发疯">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-搭建python项目" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time class="dt-published" datetime="2024-09-06T03:25:47.616Z" itemprop="datePublished">2024-09-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="虚拟环境venv"><a href="#虚拟环境venv" class="headerlink" title="虚拟环境venv"></a>虚拟环境venv</h2><p>基于包管理和包版本，不同版本的包如果都放在全局目录，会导致不同的项目采用了相同版本的包，而一些项目只能用某个版本；<br>包放在全局目录，导致包污染，使用虚拟环境解决。</p>
+<h2 id="创建并启用虚拟环境"><a href="#创建并启用虚拟环境" class="headerlink" title="创建并启用虚拟环境"></a>创建并启用虚拟环境</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv .venv</span><br><span class="line"><span class="built_in">source</span> .venv/bin/activate</span><br><span class="line"><span class="comment"># source .venv/bin/activate.fish # fish 和bash/zsh语法不同，因此有专门的脚本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">(.venv) xyl@VM-20-8-ubuntu ~/p/xtools&gt; <span class="built_in">which</span> pip</span><br><span class="line">/home/xyl/py/xtools/.venv/bin/pip <span class="comment"># 使用的是虚拟环境的 pip包管理器</span></span><br></pre></td></tr></table></figure>
+<h2 id="poetry-包管理器"><a href="#poetry-包管理器" class="headerlink" title="poetry 包管理器"></a>poetry 包管理器</h2><p>pip的缺陷：安装包时可以把需要的其他依赖拉取下来，但删除时只删除一个。poetry可以解决这个问题</p>
+<h3 id="poetry的命令"><a href="#poetry的命令" class="headerlink" title="poetry的命令"></a>poetry的命令</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/" data-id="cm1em9i6g000p2jwp29q21w40" data-title="搭建python项目" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-grep、sed、awk与正则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/" class="article-date">
+  <time class="dt-published" datetime="2024-08-25T16:00:00.000Z" itemprop="datePublished">2024-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h2><h3 id="1-基础正则"><a href="#1-基础正则" class="headerlink" title="1. 基础正则"></a>1. 基础正则</h3><ol>
+<li>grep命令支持基础正则。</li>
+<li>grep命令后面跟’正则表达式’，操作的文件可以来自管道或文件。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -o <span class="string">&#x27;\([a-zA-Z]+\),&#x27;</span> regexp.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在regexp.txt中找出(aabf),类似内容</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-扩展正则"><a href="#2-扩展正则" class="headerlink" title="2.扩展正则"></a>2.扩展正则</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><h2 id="补充概念"><a href="#补充概念" class="headerlink" title="补充概念"></a>补充概念</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/" data-id="cm1em9i5u00072jwpc22i0jfw" data-title="grep、sed、awk与正则" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-物理层" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2024-08-09T16:00:00.000Z" itemprop="datePublished">2024-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、物理层概念总结"><a href="#一、物理层概念总结" class="headerlink" title="一、物理层概念总结"></a>一、物理层概念总结</h2><h3 id="1-信号、信源、信宿、码元、波特"><a href="#1-信号、信源、信宿、码元、波特" class="headerlink" title="1. 信号、信源、信宿、码元、波特"></a>1. 信号、信源、信宿、码元、波特</h3><p>信号：数据；</p>
+<p>信源：信息发送方；</p>
+<p>信宿：信息接收方；</p>
+<p>码元：与电压跳变相关，参考<a href="###码元和比特">码元和比特</a></p>
+<h3 id="2-传输速率"><a href="#2-传输速率" class="headerlink" title="2. 传输速率"></a>2. 传输速率</h3><h4 id="2-1-数据传输速率"><a href="#2-1-数据传输速率" class="headerlink" title="2.1 数据传输速率"></a>2.1 数据传输速率</h4><p>秒为单位，1kb/s=1000bits/s，k为1000（在存储领域，1kb=1024b）</p>
+<h4 id="2-2-码元传输速率"><a href="#2-2-码元传输速率" class="headerlink" title="2.2 码元传输速率"></a>2.2 码元传输速率</h4><p>秒为单位，Baud/s</p>
+<h3 id="3-编码和调制"><a href="#3-编码和调制" class="headerlink" title="3. 编码和调制"></a>3. 编码和调制</h3><h4 id="3-1-编码"><a href="#3-1-编码" class="headerlink" title="3.1 编码"></a>3.1 编码</h4><p>用于将数字或模拟信号编码成数字信号的技术。</p>
+<ol>
+<li><p>归零编码</p>
+<p><strong>1先高后低，0一直都是低电平</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+      -+</span><br><span class="line">  +- ---  +- --- --- ---</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>非归零编码</p>
+<p><strong>1为高电平，0为低电平</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> ---     ---</span><br><span class="line">     ---     --- --- ---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反向归零编码</p>
+<p><strong>0为高电平，1先低后高</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line">  +- ---  +-  --- --- ---</span><br><span class="line"> -+      -+ </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>曼彻斯特编码</p>
+<p><strong>1先高后低，0先低后高（或者相反）</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+   +- -+   +-  +-  +-</span><br><span class="line">  +- -+   +- -+  -+  -+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>差分曼彻斯特编码</p>
+<p>相同则<strong>不变电压</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+  -+  -+  -+   +- -+</span><br><span class="line">  +-  +-  +-  +- -+   +-</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="3-2-调制"><a href="#3-2-调制" class="headerlink" title="3.2 调制"></a>3.2 调制</h4><p>用于将数字信号或模拟信号编程模拟信号的技术</p>
+<ol>
+<li>调幅 调整 1 的表现方式，以非归零编码为例，原本1是直线，调幅后变成sin函数</li>
+<li>调相 调整 1 和 0 的数值关系，如1是sinx，0是-sinx</li>
+<li>调频 调整 1 和 0 的频率，通过不同的频率识别0和1</li>
+<li>调幅+调频 4种幅度、4种频率，得到16种不同的码元，也就是需要$\log_{2}^{16}=4$bit来表示一个码元，如果码元传输速率是1Baud/s，那转换成比特传输速率则是4b/s。</li>
+</ol>
+<h3 id="4-数据交换网络"><a href="#4-数据交换网络" class="headerlink" title="4. 数据交换网络"></a>4. 数据交换网络</h3><h3 id="4-1-电路交换"><a href="#4-1-电路交换" class="headerlink" title="4.1 电路交换"></a>4.1 电路交换</h3><p>整体过程：建立连接—&gt;数据通信—&gt;释放连接</p>
+<p>适用情况：数字信号、模拟信号；高实时性，大量数据</p>
+<p>优点：数据按顺序发送和接收，高实时性，全双工</p>
+<h3 id="4-2-报文交换"><a href="#4-2-报文交换" class="headerlink" title="4.2 报文交换"></a>4.2 报文交换</h3><ol>
+<li><p>不建立通信链路，发送数据报文到路由表记录有的结点。</p>
+</li>
+<li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p>
+</li>
+</ol>
+<h3 id="4-3-分组交换"><a href="#4-3-分组交换" class="headerlink" title="4.3 分组交换"></a>4.3 分组交换</h3><ol>
+<li><p>不建立通信链路，根据路由表发送到网络结点。</p>
+</li>
+<li><p>比报文交换一次性发送的数据量更小（通常128b），延迟更低，稳定性更高，信道利用率也更高。</p>
+</li>
+<li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p>
+</li>
+</ol>
+<h3 id="4-4-虚电路"><a href="#4-4-虚电路" class="headerlink" title="4.4 虚电路"></a>4.4 虚电路</h3><p>端到端建立一条多个结点的虚拟链路，一旦设备错误需要重新建立整条虚电路。</p>
+<h2 id="二、物理层设备"><a href="#二、物理层设备" class="headerlink" title="二、物理层设备"></a>二、物理层设备</h2><ol>
+<li><p>中继器</p>
+<p>两台设备网络一致，可以使用不一致的物理信道。</p>
+</li>
+<li><p>集线器</p>
+<p>多台设备网络一致，可以使用不一致的物理信道，<strong>机器越多网速越慢</strong>；</p>
+<p>分割冲突域。</p>
+</li>
+</ol>
+<h3 id="物理层协议"><a href="#物理层协议" class="headerlink" title="物理层协议"></a>物理层协议</h3><h2 id="三、补充概念"><a href="#三、补充概念" class="headerlink" title="三、补充概念"></a>三、补充概念</h2><h3 id="码元和比特"><a href="#码元和比特" class="headerlink" title="码元和比特"></a>码元和比特</h3><p>一个时间单位内电压变换种类，由此得到码元和比特的关系是bit=$\log_{2}^{k}$Baud</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/" data-id="cm1em9i6n00172jwpf359299w" data-title="计算机网络-物理层概念" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-shell脚本学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-08-04T16:00:00.000Z" itemprop="datePublished">2024-08-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/shell/">shell</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h2 id="参数处理"><a href="#参数处理" class="headerlink" title="参数处理"></a>参数处理</h2><ol>
+<li>使用$1、$2…表示参数（这在脚本语言中称为位置参数），需要注意当参数个数超过10个（包括10），需要使用花括号，如${10}， 此外$0表示脚本或程序的名称；</li>
+<li>使用$?表示上一条命令的执行返回值，0表示正常返回；</li>
+<li>使用$#表示参数个数，$0将不被包含在内，即bash test.sh 0 1 2 3，使用echo $#将得到4，而不是5；</li>
+<li>使用$$获取当前进程的进程号pid，如:93655；</li>
+<li>使用$@和$*获取所有参数，其中$*会将所有的参数当做一整个字符串，遍历时只会循环一遍；</li>
+</ol>
+<h2 id="字符处理"><a href="#字符处理" class="headerlink" title="字符处理"></a>字符处理</h2><ol>
+<li>‘’单引号表示输出原始字符串，单引号内部的数据不会经过转义，但双引号””会；</li>
+</ol>
+<h2 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h2><ol>
+<li>$[1 + 1]、$((1 + 1))、expr 1 + 1 三种方式都可以进行四则运算；特殊地，expr四则运算的符号必须用空格隔开。</li>
+<li>特殊地，*<em>表示乘方，如2*</em>3表示2^3=8；</li>
+</ol>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ol>
+<li>条件判断语句为[ ]，其中的符号包括：=（等于）、!=（不等于）、-z（字符串长度为零）、-n（字符串长度不为零）、-e（文件存在）、-f（文件存在且为普通文件）、-d（文件存在且为目录）、-r（文件存在且可读）、-w（文件存在且可写）、-x（文件存在且可执行）；</li>
+<li>条件判断语句可以与&amp;&amp;（与）、||（或）、！（非）结合使用；</li>
+</ol>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ol>
+<li>for循环的语法为：for var in item1 item2… itemN；</li>
+<li>while循环的语法为：while condition；</li>
+<li>until循环的语法为：until condition；</li>
+<li>break、continue语句用于跳出循环；</li>
+</ol>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ol>
+<li>函数的定义语法为：function name { commands; }；</li>
+<li>函数调用语法为：name param1 param2…；</li>
+<li>函数返回值使用return语句，返回值只能是数字、字符串、数组、字典等简单数据类型；</li>
+</ol>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><ol>
+<li>输出到终端使用echo命令，如echo “Hello World!”；</li>
+<li>输出到文件使用重定向符号&gt;，如echo “Hello World!” &gt; output.txt；</li>
+<li>输入从终端使用read命令，如read name；</li>
+<li>输入从文件使用&lt;符号，如cat input.txt | while read line; do echo $line; done；</li>
+</ol>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ol>
+<li>数组的定义语法为：array_name=(item1 item2… itemN)；</li>
+<li>数组的访问语法为：${array_name[index]}，其中index从0开始；</li>
+<li>字典的定义语法为：declare -A dict_name=([“key1”]=”value1” [“key2”]=”value2”…)；</li>
+<li>字典的访问语法为：${dict_name[“key”]}；</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>赋值不能空格，如a=1，不能写成a = 1；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm1em9i6f000n2jwpfxz867hj" data-title="shell脚本学习笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/" rel="tag">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java序列化和反序列化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2024-08-01T09:03:14.430Z" itemprop="datePublished">2024-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>►<a class="article-category-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h2><blockquote>
+<p>序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换成可取用格式（例如存成文件，存于缓冲，或经由网络中发送），以留待后续在相同或另一台计算机环境中，能恢复原先状态的过程。依照序列化格式重新获取字节的结果时，可以利用它来产生与原始对象相同语义的副本。对于许多对象，像是使用大量引用的复杂对象，这种序列化重建的过程并不容易。面向对象中的对象序列化，并不概括之前原始对象所关系的函数。这种过程也称为对象编组（marshalling）。从一系列字节提取数据结构的反向操作，是反序列化（也称为解编组、deserialization、unmarshalling）。</p>
+</blockquote>
+<ul>
+<li>序列化：将数据结构或对象转换成二进制字节流的过程；</li>
+<li>反序列化：将在序列化过程中所生成的二进制字节流转换成数据结构或者对象的过程。</li>
+</ul>
+<p>对于 Java 这种面向对象编程语言来说，序列化的都是对象（Object）也就是实例化后的类(Class)，但是在 C++这种半面向对象的语言中，struct(结构体)定义的是数据结构类型，而 class 对应的是对象类型。</p>
+<p>下面是序列化和反序列化常见应用场景：</p>
+<ul>
+<li>对象在进行网络传输（比如远程方法调用 RPC 的时候）之前需要先被序列化，接收到序列化的对象之后需要再进行反序列化；</li>
+<li>将对象存储到文件之前需要进行序列化，将对象从文件中读取出来需要进行反序列化；</li>
+<li>将对象存储到数据库（如 Redis）之前需要用到序列化，将对象从缓存数据库中读取出来需要反序列化；</li>
+<li>将对象存储到内存之前需要进行序列化，从内存中读取出来之后需要进行反序列化。</li>
+</ul>
+<h2 id="常见序列化协议"><a href="#常见序列化协议" class="headerlink" title="常见序列化协议"></a>常见序列化协议</h2><p>JDK自带的序列化方式一般不会用，因为序列化效率低并且存在安全问题。<br>比较常用的序列化协议有：Hessian、Kryo、Protobuf、ProtoStuff，这些都是基于二进制的序列化协议。像<code>JSON</code>和<code>XML</code>这种属于文本类序列化方式。虽然可读性比较好，但是性能较差，一般不会选择。</p>
+<h3 id="JDK自带的序列化方式"><a href="#JDK自带的序列化方式" class="headerlink" title="JDK自带的序列化方式"></a>JDK自带的序列化方式</h3><p>自带的序列化，只需实现 java.io.Serializable接口即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1905122041950251207L</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="serialVersionUID-有什么作用"><a href="#serialVersionUID-有什么作用" class="headerlink" title="serialVersionUID 有什么作用"></a>serialVersionUID 有什么作用</h4><p>序列化号<code>serialVersionUID</code>属于版本控制的作用。反序列化时，会检查<code>serialVersionUID</code>是否和当前类的<code>serialVersionUID</code>一致。如果<code>serialVersionUID</code>不一致则会抛出<code>InvalidClassException</code>异常。强烈推荐每个序列化类都手动指定其<code>serialVersionUID</code>，如果不手动指定，那么编译器会动态生成默认的<code>serialVersionUID</code>。</p>
+<h4 id="serialVersionUID-不是被-static-变量修饰了吗？为什么还会被“序列化”？"><a href="#serialVersionUID-不是被-static-变量修饰了吗？为什么还会被“序列化”？" class="headerlink" title="serialVersionUID 不是被 static 变量修饰了吗？为什么还会被“序列化”？"></a>serialVersionUID 不是被 static 变量修饰了吗？为什么还会被“序列化”？</h4><p><code>static</code>修饰的变量是静态变量，属于类而非类的实例，本身是不会被序列化的。然而，<code>serialVersionUID</code>是一个特例，<code>serialVersionUID</code>的序列化做了特殊处理。当一个对象被序列化时，serialVersionUID 会被写入到序列化的二进制流中；在反序列化时，也会解析它并做一致性判断，以此来验证序列化对象的版本一致性。如果两者不匹配，反序列化过程将抛出<code>InvalidClassException</code>，因为这通常意味着序列化的类的定义已经发生了更改，可能不再兼容。</p>
+<h4 id="使用transient避免被序列化"><a href="#使用transient避免被序列化" class="headerlink" title="使用transient避免被序列化"></a>使用transient避免被序列化</h4><p><code>transient</code>只修饰变量。修饰的变量在序列化后的值都是对应类型的默认值，如int类型默认为0。</p>
+<blockquote>
+<p>static 变量不属于任何对象，不会被序列化</p>
+</blockquote>
+<h4 id="为什么不推荐使用Java自带的序列化工具？"><a href="#为什么不推荐使用Java自带的序列化工具？" class="headerlink" title="为什么不推荐使用Java自带的序列化工具？"></a>为什么不推荐使用Java自带的序列化工具？</h4><ul>
+<li>不支持跨语言调用: 如果调用的是其他语言开发的服务的时候就不支持了。</li>
+<li>性能差：相比于其他序列化框架性能更低，主要原因是序列化之后的字节数组体积较大，导致传输成本加大。</li>
+<li>存在安全问题：序列化和反序列化本身并不存在问题。但当输入的反序列化的数据可被用户控制，那么攻击者即可通过构造恶意输入，让反序列化产生非预期的对象，在此过程中执行构造的任意代码。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="cm1em9i5y000b2jwp440i660q" data-title="Java序列化和反序列化" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-B+树概念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time class="dt-published" datetime="2024-07-31T16:00:00.000Z" itemprop="datePublished">2024-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/">B+树概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="B-树概念"><a href="#B-树概念" class="headerlink" title="B+树概念"></a>B+树概念</h2><p>阶数m：分支数量，根据节点类型不同，m的取值不同。<br>对于非叶子结点，m&gt;=<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="6.258ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2766 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2308" d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"></path></g><g data-mml-node="mi" transform="translate(444,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1322,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(1822,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(2322,0)"><path data-c="2309" d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"></path></g></g></g></svg></mjx-container>,m&lt;=m-1。解释：一棵m阶b+树，非叶子结点最多含有m个分支（子结点），且最少含有m/2个分支（子结点）。<br>对于叶子节点，子结点数量最大可取m，最小还是<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="6.258ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2766 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2308" d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"></path></g><g data-mml-node="mi" transform="translate(444,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1322,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(1822,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(2322,0)"><path data-c="2309" d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"></path></g></g></g></svg></mjx-container></p>
+<p>m阶b+树，一个结点最多可以有m-1个关键字，最少<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="6.258ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2766 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2308" d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"></path></g><g data-mml-node="mi" transform="translate(444,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1322,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(1822,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(2322,0)"><path data-c="2309" d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"></path></g></g></g></svg></mjx-container>个关键字。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/01/B+%E6%A0%91%E6%A6%82%E5%BF%B5/" data-id="cm1em9i5j00002jwp3p873mld" data-title="B+树概念" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java传值方式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-07-31T16:00:00.000Z" itemprop="datePublished">2024-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/">java传值方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>java 只支持值传递，没有引用传递方式，即使传入对象，那也是对象的地址，地址也是简单数据类型，也就是值传递，所以如果一个函数交换两个对象的地址，是不会成功的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">xiaoZhang</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;小张&quot;</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">xiaoLi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;小李&quot;</span>);</span><br><span class="line">        swap(xiaoZhang, xiaoLi);</span><br><span class="line">        System.out.println(<span class="string">&quot;xiaoZhang:&quot;</span> + xiaoZhang.getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;xiaoLi:&quot;</span> + xiaoLi.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(Person person1, Person person2)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">temp</span> <span class="operator">=</span> person1;</span><br><span class="line">        person1 = person2;</span><br><span class="line">        person2 = temp;</span><br><span class="line">        System.out.println(<span class="string">&quot;person1:&quot;</span> + person1.getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;person2:&quot;</span> + person2.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">person1:小李</span><br><span class="line">person2:小张</span><br><span class="line">xiaoZhang:小张</span><br><span class="line">xiaoLi:小李</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/01/java%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/" data-id="cm1em9i67000f2jwpa3sy7psp" data-title="java传值方式" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-操作系统概念整理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2024-07-08T00:27:22.220Z" itemprop="datePublished">2024-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/">操作系统概念整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="spooling技术"><a href="#spooling技术" class="headerlink" title="spooling技术"></a>spooling技术</h2><p>spooling技术是指将输入输出操作分离，将输入输出操作的请求存储在缓冲区中，并在需要时进行处理。</p>
+<p>spooling技术的优点是：</p>
+<ol>
+<li>减少了系统的开销，因为不需要等待输入输出操作的完成。</li>
+<li>提高了系统的并发性，因为可以同时处理多个输入输出操作。</li>
+<li>简化了系统的设计，因为不需要考虑各种输入输出操作的细节。</li>
+</ol>
+<h2 id="覆盖交换技术"><a href="#覆盖交换技术" class="headerlink" title="覆盖交换技术"></a>覆盖交换技术</h2><ol>
+<li>覆盖交换技术是指将内存中的程序和数据分割成多个区域，并在需要时进行交换。</li>
+<li>覆盖交换技术的优点是：<ul>
+<li>减少了内存的使用率，因为可以将程序和数据分割成多个区域，使得内存中有更多的空闲空间。</li>
+<li>提高了内存的利用率，因为可以将程序和数据分割成多个区域，使得内存中有更多的程序和数据可以运行。</li>
+<li>简化了内存管理，因为可以将程序和数据分割成多个区域，并在需要时进行交换，不需要考虑内存碎片的问题。</li>
+</ul>
+</li>
+<li>覆盖交换技术的缺点是：<ul>
+<li>增加了系统开销，因为需要进行内存的分配和交换。</li>
+<li>降低了系统的并发性，因为交换操作需要暂停整个系统。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟存储技术"><a href="#虚拟存储技术" class="headerlink" title="虚拟存储技术"></a>虚拟存储技术</h2><ol>
+<li>虚拟存储技术是指将一个物理存储器分割成多个逻辑存储器，并在需要时进行映射。</li>
+<li>虚拟存储技术的优点是：<ul>
+<li>减少了物理存储器的使用率，因为可以将物理存储器分割成多个逻辑存储器，使得物理存储器中有更多的空闲空间。</li>
+<li>提高了物理存储器的利用率，因为可以将物理存储器分割成多个逻辑存储器，使得物理存储器中有更多的程序和数据可以运行。</li>
+<li>简化了物理存储器管理，因为可以将物理存储器分割成多个逻辑存储器，并在需要时进行映射，不需要考虑物理碎片的问题。</li>
+</ul>
+</li>
+<li>虚拟存储技术的缺点是：<ul>
+<li>增加了系统开销，因为需要进行物理存储器的分配和映射。</li>
+<li>降低了系统的并发性，因为映射操作需要暂停整个系统。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟内存技术"><a href="#虚拟内存技术" class="headerlink" title="虚拟内存技术"></a>虚拟内存技术</h2><ol>
+<li>虚拟内存技术是指将物理内存分割成多个虚拟内存，并在需要时进行映射。</li>
+<li>虚拟内存技术的优点是：<ul>
+<li>减少了系统的开销，因为可以将物理内存分割成多个虚拟内存，使得系统中有更多的空闲空间。</li>
+<li>提高了系统的并发性，因为可以同时运行多个虚拟内存。</li>
+<li>简化了系统的设计，因为不需要考虑物理内存的细节。</li>
+</ul>
+</li>
+<li>虚拟内存技术的缺点是：<ul>
+<li>降低了物理内存的利用率，因为虚拟内存需要占用物理内存。</li>
+<li>增加了物理内存的碎片，因为虚拟内存需要占用物理内存。</li>
+</ul>
+</li>
+</ol>
+<h2 id="通道技术"><a href="#通道技术" class="headerlink" title="通道技术"></a>通道技术</h2><ol>
+<li>通道技术是指将输入输出操作分离，并通过专用通道进行传输。</li>
+<li>通道技术的优点是：<ul>
+<li>减少了系统的开销，因为不需要等待输入输出操作的完成。</li>
+<li>提高了系统的并发性，因为可以同时处理多个输入输出操作。</li>
+<li>简化了系统的设计，因为不需要考虑各种输入输出操作的细节。</li>
+</ul>
+</li>
+<li>通道技术的缺点是：<ul>
+<li>降低了系统的可靠性，因为通道可能会出现错误。</li>
+<li>增加了系统的复杂性，因为需要设计专用通道。</li>
+</ul>
+</li>
+</ol>
+<h2 id="缓冲技术"><a href="#缓冲技术" class="headerlink" title="缓冲技术"></a>缓冲技术</h2><ol>
+<li>缓冲技术是指将输入输出操作分离，并通过缓冲区进行传输。</li>
+<li>缓冲技术的优点是：<ul>
+<li>减少了系统的开销，因为不需要等待输入输出操作的完成。</li>
+<li>提高了系统的并发性，因为可以同时处理多个输入输出操作。</li>
+<li>简化了系统的设计，因为不需要考虑各种输入输出操作的细节。</li>
+</ul>
+</li>
+<li>缓冲技术的缺点是：<ul>
+<li>降低了系统的可靠性，因为缓冲区可能会出现错误。</li>
+<li>增加了系统的复杂性，因为需要设计缓冲区。</li>
+</ul>
+</li>
+</ol>
+<h2 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h2><ol>
+<li>页面置换算法是指当内存中没有空闲空间时，选择一页或多页页面进行替换。</li>
+<li>页面置换算法的优点是：<ul>
+<li>减少了系统的开销，因为可以将内存中的程序和数据分割成多个区域，使得内存中有更多的空闲空间。</li>
+<li>提高了系统的并发性，因为可以同时运行多个虚拟内存。</li>
+<li>简化了系统的设计，因为不需要考虑物理内存的细节。</li>
+</ul>
+</li>
+<li>页面置换算法的缺点是：<ul>
+<li>降低了系统的性能，因为频繁的页面置换会导致系统的响应时间变长。</li>
+<li>增加了系统的复杂性，因为需要设计页面置换算法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="最佳置换算法"><a href="#最佳置换算法" class="headerlink" title="最佳置换算法"></a>最佳置换算法</h3><ol>
+<li>最佳置换算法是指选择被访问最少的页面进行替换。</li>
+<li>最佳置换算法的优点是：<ul>
+<li>降低了系统的性能，因为可以减少页面置换的次数。</li>
+<li>提高了系统的命中率，因为可以减少页面置换的次数。</li>
+</ul>
+</li>
+<li>最佳置换算法的缺点是：<ul>
+<li>降低了系统的并发性，因为需要等待被置换的页面被访问。</li>
+<li>增加了系统的复杂性，因为需要设计页面置换算法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="最近最少使用置换算法"><a href="#最近最少使用置换算法" class="headerlink" title="最近最少使用置换算法"></a>最近最少使用置换算法</h3><ol>
+<li>最近最少使用置换算法是指选择最近被访问的页面进行替换。</li>
+<li>最近最少使用置换算法的优点是：<ul>
+<li>降低了系统的性能，因为可以减少页面置换的次数。</li>
+<li>提高了系统的命中率，因为可以减少页面置换的次数。</li>
+</ul>
+</li>
+<li>最近最少使用置换算法的缺点是：<ul>
+<li>降低了系统的并发性，因为需要等待被置换的页面被访问。</li>
+<li>增加了系统的复杂性，因为需要设计页面置换算法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="先进先出置换算法"><a href="#先进先出置换算法" class="headerlink" title="先进先出置换算法"></a>先进先出置换算法</h3><ol>
+<li>先进先出置换算法是指选择最先进入内存的页面进行替换。</li>
+<li>先进先出置换算法的优点是：<ul>
+<li>降低了系统的性能，因为可以减少页面置换的次数。</li>
+<li>提高了系统的命中率，因为可以减少页面置换的次数。</li>
+</ul>
+</li>
+<li>先进先出置换算法的缺点是：<ul>
+<li>降低了系统的并发性，因为需要等待被置换的页面被访问。</li>
+<li>增加了系统的复杂性，因为需要设计页面置换算法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="时钟置换算法"><a href="#时钟置换算法" class="headerlink" title="时钟置换算法"></a>时钟置换算法</h3><ol>
+<li>时钟置换算法是指选择最近最久未使用页面进行替换。</li>
+<li>时钟置换算法的优点是：<ul>
+<li>降低了系统的性能，因为可以减少页面置换的次数。</li>
+<li>提高了系统的命中率，因为可以减少页面置换的次数。</li>
+</ul>
+</li>
+<li>时钟置换算法的缺点是：<ul>
+<li>降低了系统的并发性，因为需要等待被置换的页面被访问。</li>
+<li>增加了系统的复杂性，因为需要设计页面置换算法。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟内存管理"><a href="#虚拟内存管理" class="headerlink" title="虚拟内存管理"></a>虚拟内存管理</h2><ol>
+<li>虚拟内存管理是指管理虚拟内存，包括分配、映射、置换、回收等操作。</li>
+<li>虚拟内存管理的优点是：<ul>
+<li>减少了系统的开销，因为可以将物理内存分割成多个虚拟内存，使得系统中有更多的空闲空间。</li>
+<li>提高了系统的并发性，因为可以同时运行多个虚拟内存。</li>
+<li>简化了系统的设计，因为不需要考虑物理内存的细节。</li>
+</ul>
+</li>
+<li>虚拟内存管理的缺点是：<ul>
+<li>降低了物理内存的利用率，因为虚拟内存需要占用物理内存。</li>
+<li>增加了物理内存的碎片，因为虚拟内存需要占用物理内存。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟内存的实现"><a href="#虚拟内存的实现" class="headerlink" title="虚拟内存的实现"></a>虚拟内存的实现</h2><ol>
+<li>虚拟内存的实现是指将物理内存分割成多个虚拟内存，并在需要时进行映射。</li>
+<li>虚拟内存的实现的优点是：<ul>
+<li>减少了系统的开销，因为可以将物理内存分割成多个虚拟内存，使得系统中有更多的空闲空间。</li>
+<li>提高了系统的并发性，因为可以同时运行多个虚拟内存。</li>
+<li>简化了系统的设计，因为不需要考虑物理内存的细节。</li>
+</ul>
+</li>
+<li>虚拟内存的实现的缺点是：<ul>
+<li>降低了物理内存的利用率，因为虚拟内存需要占用物理内存。</li>
+<li>增加了物理内存的碎片，因为虚拟内存需要占用物理内存。</li>
+</ul>
+</li>
+</ol>
+<h2 id="缓冲池技术"><a href="#缓冲池技术" class="headerlink" title="缓冲池技术"></a>缓冲池技术</h2><ol>
+<li>缓冲池技术是指将内存中的程序和数据分割成多个区域，并在需要时进行缓冲。</li>
+<li>缓冲池技术的优点是：<ul>
+<li>减少了系统的开销，因为可以将程序和数据分割成多个区域，使得内存中有更多的空闲空间。</li>
+<li>提高了系统的并发性，因为可以同时运行多个虚拟内存。</li>
+<li>简化了系统的设计，因为不需要考虑物理内存的细节。</li>
+</ul>
+</li>
+<li>缓冲池技术的缺点是：<ul>
+<li>降低了物理内存的利用率，因为缓冲池需要占用物理内存。</li>
+<li>增加了物理内存的碎片，因为缓冲池需要占用物理内存。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟内存与缓冲池的区别"><a href="#虚拟内存与缓冲池的区别" class="headerlink" title="虚拟内存与缓冲池的区别"></a>虚拟内存与缓冲池的区别</h2><ol>
+<li>虚拟内存与缓冲池的区别是：<ul>
+<li>虚拟内存是将物理内存分割成多个虚拟内存，并在需要时进行映射。</li>
+<li>缓冲池是将内存中的程序和数据分割成多个区域，并在需要时进行缓冲。</li>
+</ul>
+</li>
+</ol>
+<h2 id="创建进程的四个情况"><a href="#创建进程的四个情况" class="headerlink" title="创建进程的四个情况"></a>创建进程的四个情况</h2><ol>
+<li>用户登录</li>
+<li>提供服务</li>
+<li>作业调度</li>
+<li>应用请求</li>
+</ol>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/07/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" data-id="cm1em9i6j000v2jwp8chk74ju" data-title="操作系统概念整理" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-数据结构概念整理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2024-07-07T10:43:48.235Z" itemprop="datePublished">2024-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构概念整理"><a href="#数据结构概念整理" class="headerlink" title="数据结构概念整理"></a>数据结构概念整理</h1><h2 id="如何通过c的数组实现hash操作？"><a href="#如何通过c的数组实现hash操作？" class="headerlink" title="如何通过c的数组实现hash操作？"></a>如何通过c的数组实现hash操作？</h2><p>给定一个数组长度为n，定义一个hash函数f(key) = key % n，其中key为待查找的关键字。</p>
+<p>通过hash函数计算出key对应的数组下标i，将数组下标i处的值置为key。</p>
+<p>查找时，通过hash函数计算出key对应的数组下标i，并比较数组下标i处的值与key是否相等。如果相等，则说明查找成功；否则，说明查找失败。</p>
+<p>如果要计算一个元素的个数，且在o(n)时间完成，就可以使用这个hash算法。   </p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>左根右，根叶黑，黑路同，不红红。</p>
+<ul>
+<li>左根右：左孩子 &lt; 根节点 &lt; 右孩子</li>
+<li>根叶黑：根节点是黑色，叶子节点是黑色</li>
+<li>黑路同：从任意节点到叶子节点的路径上，黑色节点数量相同</li>
+<li>不红红：不会有红孩子的子节点还是红孩子</li>
+</ul>
+<p>红黑树有自平衡的机制，插入删除操作后，树的高度不会超过log(n)，也就意味着查找长度为O(log(n))。</p>
+<h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><p>哈夫曼树是一种二叉树，其中每个节点都是一个叶子节点或一个内部节点，且左右子树的权值之和最小。</p>
+<p>哈夫曼树的生成过程：</p>
+<ol>
+<li>首先，将所有字符及其出现的频率作为叶子节点，构造一棵二叉树。</li>
+<li>然后，从根节点开始，将两个权值最小的子树合并为一个新的内部节点，并将原来的两个子树作为左右子树。</li>
+<li>重复步骤2，直到所有的叶子节点都在同一棵树上。</li>
+</ol>
+<h3 id="哈夫曼数的特性"><a href="#哈夫曼数的特性" class="headerlink" title="哈夫曼数的特性"></a>哈夫曼数的特性</h3><ul>
+<li>任意一颗哈夫曼树都对应唯一的哈夫曼编码，且编码长度最短。</li>
+<li>每一个编码都不能是其他编码的前缀。如0，10，110，1110，11110等。<br>  这样如果有一个编码：0 10 110 1110 </li>
+<li>哈夫曼树的高度等于字符的个数。</li>
+<li>哈夫曼树的平均路径长度等于字符的个数。</li>
+</ul>
+<h3 id="哈夫曼bergman编码"><a href="#哈夫曼bergman编码" class="headerlink" title="哈夫曼bergman编码"></a>哈夫曼bergman编码</h3><p>哈夫曼bergman编码是一种变长编码，它可以对任意长度的二进制串进行编码，且编码长度最短。</p>
+<h3 id="哈夫曼编码的应用"><a href="#哈夫曼编码的应用" class="headerlink" title="哈夫曼编码的应用"></a>哈夫曼编码的应用</h3><ul>
+<li>数据压缩：将原始数据经过哈夫曼编码后，编码后的串的长度通常比原始数据长度小很多。</li>
+<li>数据加密：哈夫曼编码可以对数据进行加密，使得接收方无法直接解读数据内容。</li>
+<li>数据校验：哈夫曼编码可以对数据进行校验，检测数据是否被篡改。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/07/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" data-id="cm1em9i6l00102jwpb4es4vcu" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机组成原理概念整理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2024-07-07T10:22:13.179Z" itemprop="datePublished">2024-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机组成原理概念整理"><a href="#计算机组成原理概念整理" class="headerlink" title="计算机组成原理概念整理"></a>计算机组成原理概念整理</h1><h2 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h2><h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><h4 id="大端和小端"><a href="#大端和小端" class="headerlink" title="大端和小端"></a>大端和小端</h4><p>基础数据：12345678H</p>
+<ul>
+<li>大端：高位存放在低地址，和自然阅读的顺序一致，存放结果：12H 34H 56H 78H</li>
+<li>小端：低位存放在低地址，和计算机数组的顺序一致，存放结果：78H 56H 34H 12H</li>
+</ul>
+<h2 id="bcd码"><a href="#bcd码" class="headerlink" title="bcd码"></a>bcd码</h2><h3 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h3><p>BCD码是一种二进制编码，它将8位二进制数的低4位作为一个数字，高4位作为一个数字的进位。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/07/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86/" data-id="cm1em9i6p001d2jwp2jow8ana" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>

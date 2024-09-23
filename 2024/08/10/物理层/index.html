@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>计算机网络-物理层概念 | xyl的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、物理层概念总结1. 信号、信源、信宿、码元、波特信号：数据； 信源：信息发送方； 信宿：信息接收方； 码元：与电压跳变相关，参考码元和比特 2. 传输速率2.1 数据传输速率秒为单位，1kb&#x2F;s&#x3D;1000bits&#x2F;s，k为1000（在存储领域，1kb&#x3D;1024b） 2.2 码元传输速率秒为单位，Baud&#x2F;s 3. 编码和调制3.1 编码用于将数字或模拟信号编码成数字信号的技术。  归零编码 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-物理层概念">
+<meta property="og:url" content="https://github.com/xyiling/xyiling.github.io/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/index.html">
+<meta property="og:site_name" content="xyl的个人博客">
+<meta property="og:description" content="一、物理层概念总结1. 信号、信源、信宿、码元、波特信号：数据； 信源：信息发送方； 信宿：信息接收方； 码元：与电压跳变相关，参考码元和比特 2. 传输速率2.1 数据传输速率秒为单位，1kb&#x2F;s&#x3D;1000bits&#x2F;s，k为1000（在存储领域，1kb&#x3D;1024b） 2.2 码元传输速率秒为单位，Baud&#x2F;s 3. 编码和调制3.1 编码用于将数字或模拟信号编码成数字信号的技术。  归零编码 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-10T12:17:21.994Z">
+<meta property="article:author" content="xiaoyiling">
+<meta property="article:tag" content="交换网络, 帧传输, 信号, 编码, 调制">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="xyl的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xyl的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">基本工资高才是福利，谈绩效的一律视为CPU</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/xyiling/xyiling.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-物理层" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2024-08-09T16:00:00.000Z" itemprop="datePublished">2024-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a>►<a class="article-category-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      计算机网络-物理层概念
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、物理层概念总结"><a href="#一、物理层概念总结" class="headerlink" title="一、物理层概念总结"></a>一、物理层概念总结</h2><h3 id="1-信号、信源、信宿、码元、波特"><a href="#1-信号、信源、信宿、码元、波特" class="headerlink" title="1. 信号、信源、信宿、码元、波特"></a>1. 信号、信源、信宿、码元、波特</h3><p>信号：数据；</p>
+<p>信源：信息发送方；</p>
+<p>信宿：信息接收方；</p>
+<p>码元：与电压跳变相关，参考<a href="###码元和比特">码元和比特</a></p>
+<h3 id="2-传输速率"><a href="#2-传输速率" class="headerlink" title="2. 传输速率"></a>2. 传输速率</h3><h4 id="2-1-数据传输速率"><a href="#2-1-数据传输速率" class="headerlink" title="2.1 数据传输速率"></a>2.1 数据传输速率</h4><p>秒为单位，1kb/s=1000bits/s，k为1000（在存储领域，1kb=1024b）</p>
+<h4 id="2-2-码元传输速率"><a href="#2-2-码元传输速率" class="headerlink" title="2.2 码元传输速率"></a>2.2 码元传输速率</h4><p>秒为单位，Baud/s</p>
+<h3 id="3-编码和调制"><a href="#3-编码和调制" class="headerlink" title="3. 编码和调制"></a>3. 编码和调制</h3><h4 id="3-1-编码"><a href="#3-1-编码" class="headerlink" title="3.1 编码"></a>3.1 编码</h4><p>用于将数字或模拟信号编码成数字信号的技术。</p>
+<ol>
+<li><p>归零编码</p>
+<p><strong>1先高后低，0一直都是低电平</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+      -+</span><br><span class="line">  +- ---  +- --- --- ---</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>非归零编码</p>
+<p><strong>1为高电平，0为低电平</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> ---     ---</span><br><span class="line">     ---     --- --- ---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反向归零编码</p>
+<p><strong>0为高电平，1先低后高</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line">  +- ---  +-  --- --- ---</span><br><span class="line"> -+      -+ </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>曼彻斯特编码</p>
+<p><strong>1先高后低，0先低后高（或者相反）</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+   +- -+   +-  +-  +-</span><br><span class="line">  +- -+   +- -+  -+  -+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>差分曼彻斯特编码</p>
+<p>相同则<strong>不变电压</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------+</span><br><span class="line">| 1 | 0 | 1 | 0 | 0 | 0 |</span><br><span class="line">+-----------------------+</span><br><span class="line"> -+  -+  -+  -+   +- -+</span><br><span class="line">  +-  +-  +-  +- -+   +-</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="3-2-调制"><a href="#3-2-调制" class="headerlink" title="3.2 调制"></a>3.2 调制</h4><p>用于将数字信号或模拟信号编程模拟信号的技术</p>
+<ol>
+<li>调幅 调整 1 的表现方式，以非归零编码为例，原本1是直线，调幅后变成sin函数</li>
+<li>调相 调整 1 和 0 的数值关系，如1是sinx，0是-sinx</li>
+<li>调频 调整 1 和 0 的频率，通过不同的频率识别0和1</li>
+<li>调幅+调频 4种幅度、4种频率，得到16种不同的码元，也就是需要$\log_{2}^{16}=4$bit来表示一个码元，如果码元传输速率是1Baud/s，那转换成比特传输速率则是4b/s。</li>
+</ol>
+<h3 id="4-数据交换网络"><a href="#4-数据交换网络" class="headerlink" title="4. 数据交换网络"></a>4. 数据交换网络</h3><h3 id="4-1-电路交换"><a href="#4-1-电路交换" class="headerlink" title="4.1 电路交换"></a>4.1 电路交换</h3><p>整体过程：建立连接—&gt;数据通信—&gt;释放连接</p>
+<p>适用情况：数字信号、模拟信号；高实时性，大量数据</p>
+<p>优点：数据按顺序发送和接收，高实时性，全双工</p>
+<h3 id="4-2-报文交换"><a href="#4-2-报文交换" class="headerlink" title="4.2 报文交换"></a>4.2 报文交换</h3><ol>
+<li><p>不建立通信链路，发送数据报文到路由表记录有的结点。</p>
+</li>
+<li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p>
+</li>
+</ol>
+<h3 id="4-3-分组交换"><a href="#4-3-分组交换" class="headerlink" title="4.3 分组交换"></a>4.3 分组交换</h3><ol>
+<li><p>不建立通信链路，根据路由表发送到网络结点。</p>
+</li>
+<li><p>比报文交换一次性发送的数据量更小（通常128b），延迟更低，稳定性更高，信道利用率也更高。</p>
+</li>
+<li><p>顺序不保证：发送“你吃饭我吃土。”，变成“你吃土我吃饭”。</p>
+</li>
+</ol>
+<h3 id="4-4-虚电路"><a href="#4-4-虚电路" class="headerlink" title="4.4 虚电路"></a>4.4 虚电路</h3><p>端到端建立一条多个结点的虚拟链路，一旦设备错误需要重新建立整条虚电路。</p>
+<h2 id="二、物理层设备"><a href="#二、物理层设备" class="headerlink" title="二、物理层设备"></a>二、物理层设备</h2><ol>
+<li><p>中继器</p>
+<p>两台设备网络一致，可以使用不一致的物理信道。</p>
+</li>
+<li><p>集线器</p>
+<p>多台设备网络一致，可以使用不一致的物理信道，<strong>机器越多网速越慢</strong>；</p>
+<p>分割冲突域。</p>
+</li>
+</ol>
+<h3 id="物理层协议"><a href="#物理层协议" class="headerlink" title="物理层协议"></a>物理层协议</h3><h2 id="三、补充概念"><a href="#三、补充概念" class="headerlink" title="三、补充概念"></a>三、补充概念</h2><h3 id="码元和比特"><a href="#码元和比特" class="headerlink" title="码元和比特"></a>码元和比特</h3><p>一个时间单位内电压变换种类，由此得到码元和比特的关系是bit=$\log_{2}^{k}$Baud</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/xyiling/xyiling.github.io/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/" data-id="cm1em9i6n00172jwpf359299w" data-title="计算机网络-物理层概念" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          grep、sed、awk与正则
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">shell脚本学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95/">入门语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/">交换网络</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/">帧传输</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/">信号</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/">编码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C/%E5%B8%A7%E4%BC%A0%E8%BE%93/%E4%BF%A1%E5%8F%B7/%E7%BC%96%E7%A0%81/%E8%B0%83%E5%88%B6/">调制</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">IP, 头部结构, 网络层</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-kernel-boot/" rel="tag">linux, kernel, boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" rel="tag">python、类、字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" rel="tag">交换网络, 帧传输, 信号, 编码, 调制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="tag">服务器项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IP-%E5%A4%B4%E9%83%A8%E7%BB%93%E6%9E%84-%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 10px;">IP, 头部结构, 网络层</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux-kernel-boot/" style="font-size: 10px;">linux, kernel, boot</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python%E3%80%81%E7%B1%BB%E3%80%81%E5%AD%97%E5%85%B8/" style="font-size: 10px;">python、类、字典</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C-%E5%B8%A7%E4%BC%A0%E8%BE%93-%E4%BF%A1%E5%8F%B7-%E7%BC%96%E7%A0%81-%E8%B0%83%E5%88%B6/" style="font-size: 10px;">交换网络, 帧传输, 信号, 编码, 调制</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">服务器项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">九月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">六月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/06/%E6%90%AD%E5%BB%BApython%E9%A1%B9%E7%9B%AE/">搭建python项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/26/grep%E3%80%81sed%E3%80%81awk%E4%B8%8E%E6%AD%A3%E5%88%99/">grep、sed、awk与正则</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/10/%E7%89%A9%E7%90%86%E5%B1%82/">计算机网络-物理层概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/05/shell%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">shell脚本学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/java%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java序列化和反序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 xiaoyiling<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,d=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=o());for(var e,i=0;i<d.length;i++)0<=(e=(e=d[i]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,a,n,o=d[i];e=function(){d=d.filter(function(t){return o!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(o)},(t=o).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,n=t.getAttribute("data-original"),a.onload=function(){t.src=n,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=n},t.src!==n&&(a.src=n)))}()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)}(this);</script></body>
+</html>
